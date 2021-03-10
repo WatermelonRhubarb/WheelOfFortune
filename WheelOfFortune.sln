@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31025.194
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WheelOfFortune", "WheelOfFortune\WheelOfFortune.csproj", "{569FC8D1-2CEA-4DAB-940D-CA97B706DD28}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WheelOfFortuneTest", "WheelOfFortuneTest\WheelOfFortuneTest.csproj", "{B5FB291D-51AB-472F-A4FC-D0321778EBAB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{569FC8D1-2CEA-4DAB-940D-CA97B706DD28}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{569FC8D1-2CEA-4DAB-940D-CA97B706DD28}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{569FC8D1-2CEA-4DAB-940D-CA97B706DD28}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{569FC8D1-2CEA-4DAB-940D-CA97B706DD28}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B5FB291D-51AB-472F-A4FC-D0321778EBAB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B5FB291D-51AB-472F-A4FC-D0321778EBAB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B5FB291D-51AB-472F-A4FC-D0321778EBAB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B5FB291D-51AB-472F-A4FC-D0321778EBAB}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {0F483EE2-7CA5-48B1-BCE4-C8054FF370F1}
+	EndGlobalSection
+EndGlobal
