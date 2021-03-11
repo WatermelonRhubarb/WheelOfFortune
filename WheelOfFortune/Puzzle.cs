@@ -8,7 +8,7 @@
         /// <summary>
         /// A property that holds the puzzle answer
         /// </summary>
-        string PuzzleAnswer { get; set; }
+        public string PuzzleAnswer { get; set; }
 
         /// <summary>
         /// A property that holds the current puzzle solution so far
