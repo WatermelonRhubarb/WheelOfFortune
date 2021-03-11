@@ -16,7 +16,7 @@ namespace WheelOfFortune
         /// <summary>
         /// A Queue that hold the players playing the game
         /// </summary>
-        private Queue<Player> Players = new Queue<Player>();
+        public Queue<Player> Players = new Queue<Player>();
 
         /// <summary>
         /// A list of the rounds throughout the game
