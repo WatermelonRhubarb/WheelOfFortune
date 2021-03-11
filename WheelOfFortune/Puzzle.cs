@@ -3,17 +3,35 @@
     /// <summary>
     /// A class that holds all the information about the Puzzle
     /// </summary>
-    class Puzzle
+    public class Puzzle
     {
         /// <summary>
         /// A property that holds the puzzle answer
         /// </summary>
-        string PuzzleAnswer { get; set; }
+        public string PuzzleAnswer { get; set; }
 
         /// <summary>
         /// A property that holds the current puzzle solution so far
         /// </summary>
-        string PuzzleSoFar { get; set; }
+        public string PuzzleSoFar { get; set; }
+
+        public Puzzle(string puzzle)
+        {
+            PuzzleAnswer = puzzle;
+            PuzzleSoFar = "";
+            //string punctuation = " .?!,'";
+            foreach (char character in PuzzleAnswer)
+            {
+                //if (punctuation.Contains(character))
+                if (character == ' ')
+                {
+                    PuzzleSoFar += character;
+                } else
+                {
+                    PuzzleSoFar += '_';
+                }
+            }
+        }
 
         /// <summary>
         /// A method to check whether the passed guessed word <paramref name="phrase"/> matches the puzzle or no
