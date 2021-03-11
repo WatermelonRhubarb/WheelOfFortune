@@ -1,14 +1,16 @@
-﻿namespace WheelOfFortune
+﻿using System;
+
+namespace WheelOfFortune
 {
     /// <summary>
     /// A class that holds the Player's Details
     /// </summary>
-    class Player
+    public class Player
     {
         /// <summary>
         /// A property holding a player name
         /// </summary>
-        string Name { get; set; }
+        public string Name { get; set; }
 
         /// <summary>
         /// A property to keep track of the Round Money for the Player
@@ -40,6 +42,12 @@
         /// </summary>
         Action CurrentAction { get; set; }
 
+        public Player(string name)
+        {
+            Name = name;
+            RoundMoney = 5;
+            WalletMoney = 10;
+        }
         /// <summary>
         /// A method to perform a specific action  on a passed puzzle (solve the puzzle-guess a letter-spin the wheel)
         /// <param name="actionType"></param>
