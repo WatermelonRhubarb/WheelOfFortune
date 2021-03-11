@@ -4,7 +4,7 @@
     /// An abstract class that defines the basic properties of an action along with the functionality required to perform the action
     /// 
     /// </summary>
-    abstract class Action
+    public abstract class Action
     {
         /// <summary>
         /// Enumration for the different action types performed by the player

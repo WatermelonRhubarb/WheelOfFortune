@@ -3,7 +3,7 @@
     /// <summary>
     /// A class that holds all the information about the Puzzle
     /// </summary>
-    class Puzzle
+    public class Puzzle
     {
         /// <summary>
         /// A property that holds the puzzle answer
