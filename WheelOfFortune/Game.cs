@@ -51,14 +51,14 @@ namespace WheelOfFortune
             string name = Console.ReadLine();
 
             // ** user validation check
-            // originally had it as an if conditon but realized while loop would be better in the event that someone wants to troll the game and passes an empty string again
+            // originally had it as an if conditon but realized while loop would be better in the event Player repeatedly does not pass in input for name
             while (string.IsNullOrEmpty(name))
             {
-                Console.WriteLine("Vana White would like to know your name, my dude. Please input your name once more so we can play the game!");
+                Console.WriteLine("Vanna White would like to know your name. Please input your name once more so we can play the game!");
                 name = Console.ReadLine();
             }
 
-            Console.WriteLine($"Hiyaa, {name}");
+            Console.WriteLine($"Hiyaa, {name}!");
 
             CurrentPlayer = new Player(name);
 
