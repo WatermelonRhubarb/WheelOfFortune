@@ -1,4 +1,5 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System;
 using WheelOfFortune;
 
 namespace WheelOfFortuneTest
@@ -6,9 +7,23 @@ namespace WheelOfFortuneTest
     [TestClass]
     public class UnitTest1
     {
-        // Solve Puzzle Action Tests
+        /* Solve Puzzle Action Tests */
+
+        /// <summary>
+        /// Tests that a new instance of the SolvePuzzleAction class initializes the property PuzzleGuess with an empty string.
+        /// </summary>
         [TestMethod]
-        public void ExecuteCorrectSolutionTest()
+        public void SolvePuzzleActionConstructorTest()
+        {
+            SolvePuzzleAction spa = new SolvePuzzleAction();
+            Assert.IsTrue(String.IsNullOrEmpty(spa.PuzzleGuess));
+        }
+
+        /// <summary>
+        ///  Tests that the Execute() method of the SolvePuzzleAction returns true when the current guess matches the PuzzleAnswer
+        /// </summary>
+        [TestMethod]
+        public void SolvePuzzleActionExecuteCorrectSolutionTest()
         {
             Puzzle currentPuzzle = new Puzzle();
             currentPuzzle.PuzzleAnswer = "WATERMELON";
@@ -16,11 +31,14 @@ namespace WheelOfFortuneTest
             SolvePuzzleAction spa = new SolvePuzzleAction();
             spa.PuzzleGuess = "WATERMELON";
 
-            Assert.AreEqual(spa.Execute(currentPuzzle), true);
+            Assert.IsTrue(spa.Execute(currentPuzzle));
         }
 
+        /// <summary>
+        /// Tests that the Execute() method of the SolvePuzzleAction returns false when the current guess does not match the PuzzleAnswer
+        /// </summary>
         [TestMethod]
-        public void ExecuteIncorrectSolutionTest()
+        public void SolvePuzzleActionExecuteIncorrectSolutionTest()
         {
             Puzzle currentPuzzle = new Puzzle();
             currentPuzzle.PuzzleAnswer = "WATERMELON";
@@ -28,7 +46,7 @@ namespace WheelOfFortuneTest
             SolvePuzzleAction spa = new SolvePuzzleAction();
             spa.PuzzleGuess = "WATERBERRY";
 
-            Assert.AreEqual(spa.Execute(currentPuzzle), false);
+            Assert.IsFalse(spa.Execute(currentPuzzle));
         }
     }
 
