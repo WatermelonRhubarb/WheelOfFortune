@@ -33,19 +33,15 @@ namespace WheelOfFortune
             RoundMoney = 5;
             WalletMoney = 10;
         }
-        public void thing()
-        {
-            Console.WriteLine(Name, RoundMoney, WalletMoney);
-        }
         /// <summary>
         /// A method to perform a specific action  on a passed puzzle (solve the puzzle-guess a letter-spin the wheel)
         /// <param name="actionType"></param>
         /// <param name="currentPuzzle"></param>
         /// <returns>bool to indicate whether the player's action successfully solved the puzzle or not </returns>
         /// </summary>
-        //public bool PerformAction(Action.ActionType actionType, Puzzle currentPuzzle)
-        //{
-        //    return false;
-        //}
+        public bool PerformAction(Action.ActionType actionType, Puzzle currentPuzzle)
+        {
+            return false;
+        }
     }
 }
