@@ -80,7 +80,10 @@ namespace WheelOfFortune
         /// </summary>
         public void EndGame()
         {
+            Console.WriteLine($"Congratulations, {CurrentPlayer.Name}!");
+            Console.WriteLine($"{CurrentPlayer.Name} won the game!");
 
+            return;
         }
 
     }
