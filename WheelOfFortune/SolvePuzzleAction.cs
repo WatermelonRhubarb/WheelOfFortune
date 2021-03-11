@@ -6,7 +6,7 @@ namespace WheelOfFortune
     /// <summary>
     /// A Class for the Solve Puzzle Action Type
     /// </summary>
-    class SolvePuzzleAction : Action
+    public class SolvePuzzleAction : Action
     {
         /// <summary>
         /// A property for the Puzzle Guess
@@ -23,6 +23,14 @@ namespace WheelOfFortune
         /// </summary>
         public override bool Execute(Puzzle currentPuzzle)
         {
+            Console.WriteLine("What is your solution to the puzzle?");
+            string guess = Console.ReadLine();
+            while (guess.Length == 0)
+            {
+                Console.WriteLine("Please enter a valid solution to the puzzle: ");
+                guess = Console.ReadLine();
+            }
+            // return currentPuzzle.IsPuzzleSolved(guess);
             return false;
         }
     }
