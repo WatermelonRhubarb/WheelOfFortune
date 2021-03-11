@@ -4,23 +4,32 @@
     /// An abstract class that defines the basic properties of an action along with the functionality required to perform the action
     /// 
     /// </summary>
-    abstract class Action
+    public abstract class Action
     {
         /// <summary>
         /// Enumration for the different action types performed by the player
         /// solving the puzzle,guessing a letter and spin the whels
         /// </summary>
         public enum ActionType {
+            /// <summary> 
+            /// The enum Action Type entry of SolvePuzzleAction
+            /// </summary>
             SolvePuzzleAction = 1,
+            /// <summary>
+            /// The enum Action Type entry of GuessLetterAction
+            /// </summary>
             GuessLetterAction = 2,
+            /// <summary>
+            /// The enum Action Type entry of SpinTheWheelAction
+            /// </summary>
             SpinTheWheelAction = 3
         }
 
         /// <summary>
         /// A property that carries the type of the action
         /// </summary>
-        public ActionType actionType { get; set; }
-
+        public ActionType ActionTypeProperty { get; set; }
+        
         //puzzle reference object
         // Sprint 2
         // Puzzle CurrentPuzzle { get; set; }
