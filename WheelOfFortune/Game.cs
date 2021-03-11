@@ -47,7 +47,22 @@ namespace WheelOfFortune
         /// </summary>
         public void AddPlayer()
         {
+            Console.WriteLine("Hey there! Welcome to Wheel of Fortune! Before we begin, what is your first name?");
+            string name = Console.ReadLine();
 
+            // ** user validation check
+            // originally had it as an if conditon but realized while loop would be better in the event that someone wants to troll the game and passes an empty string again
+            while (string.IsNullOrEmpty(name))
+            {
+                Console.WriteLine("Vana White would like to know your name, my dude. Please input your name once more so we can play the game!");
+                name = Console.ReadLine();
+            }
+
+            Console.WriteLine($"Hiyaa, {name}");
+
+            CurrentPlayer = new Player(name);
+
+            // *** add push into queue logic here ***
         }
 
 

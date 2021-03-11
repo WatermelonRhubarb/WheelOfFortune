@@ -21,6 +21,21 @@
         int WalletMoney { get; set; }
 
         /// <summary>
+        /// A constructor method signature for the Player class
+        /// <param name="name"></param>
+        /// <param name="roundMoney"></param>
+        /// <param name="walletMoney"></param>
+        /// <param name="currentAction"></param>
+        /// </summary>
+        public Player(string name, int roundMoney, int walletMoney, Action.ActionType currentAction)
+        {
+            name = name;
+            roundMoney = roundMoney;
+            walletMoney = walletMoney;
+            currentAction = currentAction;
+        }
+
+        /// <summary>
         /// A Property of type Action holding the Current Action selected by the Player
         /// </summary>
         Action CurrentAction { get; set; }
