@@ -52,9 +52,7 @@ namespace WheelOfFortune
         {
             Console.WriteLine("Press any button to start the game!");
             Console.ReadKey(true);
-            Console.WriteLine("Please enter your name.");
-            string name = Console.ReadLine();
-            AddPlayer(name);
+            AddPlayer();
             Random random = new();
             int index = random.Next(0, allPuzzles.Count);
             string nextPuzzle = allPuzzles[index];
@@ -66,10 +64,24 @@ namespace WheelOfFortune
         /// <summary>
         /// A method that initializes Player and its properties
         /// </summary>
-        public void AddPlayer(string name)
+        public void AddPlayer()
         {
-            Player newPlayer = new(name);
-            Players.Enqueue(newPlayer);
+            Console.WriteLine("Hey there! Welcome to Wheel of Fortune! Before we begin, what is your first name?");
+            string name = Console.ReadLine();
+
+            // ** user validation check
+            // originally had it as an if conditon but realized while loop would be better in the event Player repeatedly does not pass in input for name
+            while (string.IsNullOrEmpty(name))
+            {
+                Console.WriteLine("Vanna White would like to know your name. Please input your name once more so we can play the game!");
+                name = Console.ReadLine();
+            }
+
+            Console.WriteLine($"Hiyaa, {name}!");
+
+            CurrentPlayer = new Player(name);
+
+            // *** add push into queue logic here ***
         }
 
 
@@ -87,7 +99,7 @@ namespace WheelOfFortune
         public void StartTurn()
         {
             string allBlanks = new Regex("\\S").Replace(CurrentPuzzle.PuzzleAnswer, "*");
-            Console.WriteLine($"Good luck {Players.Dequeue().Name}! Here's your puzzle: \n");
+            //Console.WriteLine($"Good luck {Players.Dequeue().Name}! Here's your puzzle: \n");
             Console.WriteLine(allBlanks + "\n");
             ConsoleKeyInfo keyPressed;
             do

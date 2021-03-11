@@ -63,7 +63,7 @@
             A method that initialies the Game properties and start the turn
             </summary>
         </member>
-        <member name="M:WheelOfFortune.Game.AddPlayer(System.String)">
+        <member name="M:WheelOfFortune.Game.AddPlayer">
             <summary>
             A method that initializes Player and its properties
             </summary>
@@ -129,6 +129,20 @@
         <member name="P:WheelOfFortune.Player.CurrentAction">
             <summary>
             A Property of type Action holding the Current Action selected by the Player
+            </summary>
+        </member>
+        <member name="M:WheelOfFortune.Player.#ctor(System.String)">
+            <summary>
+            A constructor method signature for the Player class
+            <param name="name"></param>
+            </summary>
+        </member>
+        <member name="M:WheelOfFortune.Player.PerformAction(WheelOfFortune.Action.ActionType,WheelOfFortune.Puzzle)">
+            <summary>
+            A method to perform a specific action  on a passed puzzle (solve the puzzle-guess a letter-spin the wheel)
+            <param name="actionType"></param>
+            <param name="currentPuzzle"></param>
+            <returns>bool to indicate whether the player's action successfully solved the puzzle or not </returns>
             </summary>
         </member>
         <member name="T:WheelOfFortune.Program">
