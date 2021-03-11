@@ -18,8 +18,8 @@ namespace WheelOfFortuneTest
         {
             //Arrange
             //Arrange the puzzle 
-            Puzzle puzzle = new Puzzle();
-            puzzle.PuzzleAnswer = "Hello World";
+            Puzzle puzzle = new Puzzle("Hello World");
+           // puzzle.PuzzleAnswer = "Hello World";
             puzzle.PuzzleSoFar="H__l_ __rl_";
            
             //Arrange the GuessActionLetter
@@ -44,8 +44,8 @@ namespace WheelOfFortuneTest
         {
             //Arrange
             //Arrange the puzzle 
-            Puzzle puzzle = new Puzzle();
-            puzzle.PuzzleAnswer = "Hello World";
+            Puzzle puzzle = new Puzzle("Hello World");
+           // puzzle.PuzzleAnswer = "Hello World";
             puzzle.PuzzleSoFar = "H__l_ __rl_";
 
             //Arrange the GuessActionLetter
@@ -69,8 +69,8 @@ namespace WheelOfFortuneTest
         {
             //Arrange
             //Arrange the puzzle 
-            Puzzle puzzle = new Puzzle();
-            puzzle.PuzzleAnswer = "Hello World";
+            Puzzle puzzle = new Puzzle("Hello World");
+           // puzzle.PuzzleAnswer = "Hello World";
             puzzle.PuzzleSoFar = "H__l_ __rl_";
 
             //Arrange the GuessActionLetter
