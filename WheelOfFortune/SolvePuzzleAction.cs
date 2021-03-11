@@ -6,7 +6,7 @@ namespace WheelOfFortune
     /// <summary>
     /// A Class for the Solve Puzzle Action Type
     /// </summary>
-    class SolvePuzzleAction : Action
+    public class SolvePuzzleAction : Action
     {
         /// <summary>
         /// A property for the Puzzle Guess
