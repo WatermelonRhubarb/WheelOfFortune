@@ -96,17 +96,6 @@ namespace WheelOfFortune
                 keyPressed = Console.ReadKey(true);
             } while (!keyPressed.Key.Equals(ConsoleKey.D1) && !keyPressed.Key.Equals(ConsoleKey.D2));
             Console.Write("We made it!");
-
-            //CurrentPlayer.PerformAction(keyPressed, CurrentPuzzle);
-            // Depending on action, do something
-            // (Handle EndGame())
-            // Display puzzle and StartTurn()
-            // Enqueuing the last player and dequeuing the next player
-
-
-            //SolvePuzzleAction = 1,
-            //GuessLetterAction = 2,
-            //SpinTheWheelAction = 3
         }
 
         /// <summary>
