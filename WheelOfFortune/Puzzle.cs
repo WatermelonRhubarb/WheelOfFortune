@@ -1,19 +1,21 @@
-﻿namespace WheelOfFortune
+﻿using System.Text;
+
+namespace WheelOfFortune
 {
     /// <summary>
     /// A class that holds all the information about the Puzzle
     /// </summary>
-    class Puzzle
+    public class Puzzle
     {
         /// <summary>
         /// A property that holds the puzzle answer
         /// </summary>
-        string PuzzleAnswer { get; set; }
+        public string PuzzleAnswer { get; set; }
 
         /// <summary>
         /// A property that holds the current puzzle solution so far
         /// </summary>
-        string PuzzleSoFar { get; set; }
+        public string PuzzleSoFar { get; set; }
 
         /// <summary>
         /// A method to check whether the passed guessed word <paramref name="phrase"/> matches the puzzle or no
@@ -42,9 +44,25 @@
         /// A method to update the current puzzle whena right letter <paramref name="letter"/> suggestion is passed
         /// </summary>
         /// <param name="letter">existing passed letter</param>
-        public void UpdateCurrentPuzzle(char letter)
+        public void UpdatePuzzleSoFar(char letter)
         {
+            var updatedPuzzleSoFar = new StringBuilder(); ;
+            for (int index = 0; index < PuzzleAnswer.Length; index++)
+            {
+                char correctLetter = PuzzleAnswer[index];
+                if (char.ToLower(letter) == char.ToLower(correctLetter))
+                {
+                    updatedPuzzleSoFar.Append(correctLetter);
+                }
+                else
+                {
+                    updatedPuzzleSoFar.Append(PuzzleSoFar[index]);
+                }
+            }
 
+            PuzzleSoFar = updatedPuzzleSoFar.ToString();
+
+            return;
         }
     }
 }
