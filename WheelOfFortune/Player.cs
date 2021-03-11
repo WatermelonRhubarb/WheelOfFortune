@@ -30,9 +30,6 @@ namespace WheelOfFortune
         /// <summary>
         /// A constructor method signature for the Player class
         /// <param name="name"></param>
-        /// <param name="roundMoney"></param>
-        /// <param name="walletMoney"></param>
-        /// <param name="currentAction"></param>
         /// </summary>
         public Player(string name)
         {
