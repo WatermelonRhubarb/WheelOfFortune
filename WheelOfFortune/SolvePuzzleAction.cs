@@ -11,8 +11,15 @@ namespace WheelOfFortune
         /// <summary>
         /// A property for the Puzzle Guess
         /// </summary>
-        string PuzzleGuess { get; set; }
+        public string PuzzleGuess { get; set; }
 
+        /// <summary>
+        /// SolvePuzzleAction constructor initializes PuzzleGuess with an empty string
+        /// </summary>
+        public SolvePuzzleAction()
+        {
+            PuzzleGuess = "";
+        }
 
         /// <summary>
         /// The Execute Action Implementation overriding the abstract method to provide the specific implemenation for the SolveActionPuzzle type
