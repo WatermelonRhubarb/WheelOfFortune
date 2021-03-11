@@ -19,6 +19,11 @@ namespace WheelOfFortune
         public string PuzzleSoFar { get; set; }
 
 
+        public Puzzle(string puzzle)
+        {
+            PuzzleAnswer = puzzle;
+        }
+
         /// <summary>
         /// 
         /// </summary>

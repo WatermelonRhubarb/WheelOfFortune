@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Text.RegularExpressions;
 
 namespace WheelOfFortune
 {
@@ -15,7 +16,7 @@ namespace WheelOfFortune
         /// <summary>
         /// A Queue that hold the players playing the game
         /// </summary>
-        Queue<Player> Players { get; set; }
+        public Queue<Player> Players = new Queue<Player>();
 
         /// <summary>
         /// A list of the rounds throughout the game
@@ -25,21 +26,39 @@ namespace WheelOfFortune
         /// <summary>
         /// A reference for the current player
         /// </summary>
-        Player CurrentPlayer { get; set; }
+        public Player CurrentPlayer { get; set; }
 
         /// <summary>
         /// The value of the current puzzle to be solved
         /// </summary>
-        Puzzle CurrentPuzzle { get; set; }
+        public Puzzle CurrentPuzzle { get; set; }
 
+        /// <summary>
+        /// A List to keep possible puzzles
+        /// </summary>
+        private List<string> allPuzzles = new List<string>()
+        {
+            "Hello World",
+            "For the night is dark and full of terrors",
+            "For the stormcloaks",
+            "I wish you good fortune in the wars to come",
+            "You know nothing Jon Snow"
+        };
 
         /// <summary>
         /// A method that initialies the Game properties and start the turn
         /// </summary>
         public void StartGame()
         {
-            
-
+            Console.WriteLine("Press any button to start the game!");
+            Console.ReadKey(true);
+            AddPlayer();
+            Random random = new();
+            int index = random.Next(0, allPuzzles.Count);
+            string nextPuzzle = allPuzzles[index];
+            Puzzle puzzle = new(nextPuzzle);
+            CurrentPuzzle = puzzle;
+            StartTurn();
         } 
 
         /// <summary>
@@ -47,7 +66,22 @@ namespace WheelOfFortune
         /// </summary>
         public void AddPlayer()
         {
+            Console.WriteLine("Hey there! Welcome to Wheel of Fortune! Before we begin, what is your first name?");
+            string name = Console.ReadLine();
 
+            // ** user validation check
+            // originally had it as an if conditon but realized while loop would be better in the event Player repeatedly does not pass in input for name
+            while (string.IsNullOrEmpty(name))
+            {
+                Console.WriteLine("Vanna White would like to know your name. Please input your name once more so we can play the game!");
+                name = Console.ReadLine();
+            }
+
+            Console.WriteLine($"Hiyaa, {name}!");
+
+            CurrentPlayer = new Player(name);
+
+            // *** add push into queue logic here ***
         }
 
 
@@ -64,7 +98,16 @@ namespace WheelOfFortune
         /// </summary>
         public void StartTurn()
         {
-
+            string allBlanks = new Regex("\\S").Replace(CurrentPuzzle.PuzzleAnswer, "*");
+            //Console.WriteLine($"Good luck {Players.Dequeue().Name}! Here's your puzzle: \n");
+            Console.WriteLine(allBlanks + "\n");
+            ConsoleKeyInfo keyPressed;
+            do
+            {
+                Console.WriteLine("Press 1 to solve. Press 2 to guess a letter. Then press enter.");
+                keyPressed = Console.ReadKey(true);
+            } while (!keyPressed.Key.Equals(ConsoleKey.D1) && !keyPressed.Key.Equals(ConsoleKey.D2));
+            Console.Write("We made it!");
         }
 
         /// <summary>
