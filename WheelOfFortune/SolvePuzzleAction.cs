@@ -11,7 +11,7 @@ namespace WheelOfFortune
         /// <summary>
         /// A property for the Puzzle Guess
         /// </summary>
-        public string PuzzleGuess;
+        public string PuzzleGuess { get; set; }
 
         /// <summary>
         /// SolvePuzzleAction constructor initializes PuzzleGuess with an empty string

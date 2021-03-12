@@ -1,29 +1,43 @@
-﻿namespace WheelOfFortune
+﻿using System;
+
+namespace WheelOfFortune
 {
     /// <summary>
     /// A class that holds the Player's Details
     /// </summary>
-    class Player
+    public class Player
     {
         /// <summary>
         /// A property holding a player name
         /// </summary>
-        string Name { get; set; }
+        public string Name { get; set; }
 
         /// <summary>
         /// A property to keep track of the Round Money for the Player
         /// </summary>
-        int RoundMoney { get; set; }
+        public int RoundMoney { get; set; }
 
         /// <summary>
         /// A propertythat holds the Player's Wallet Money
         /// </summary>
-        int WalletMoney { get; set; }
+        public int WalletMoney { get; set; }
 
         /// <summary>
         /// A Property of type Action holding the Current Action selected by the Player
         /// </summary>
-        Action CurrentAction { get; set; }
+        public Action CurrentAction { get; set; }
+
+        /// <summary>
+        /// A constructor method signature for the Player class
+        /// <param name="name"></param>
+        /// </summary>
+        public Player(string name)
+        {
+            Name = name;
+            RoundMoney = 0;
+            WalletMoney = 0;
+            CurrentAction = null;
+        }
 
         /// <summary>
         /// A method to perform a specific action  on a passed puzzle (solve the puzzle-guess a letter-spin the wheel)
