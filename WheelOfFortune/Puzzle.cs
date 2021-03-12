@@ -8,12 +8,17 @@
         /// <summary>
         /// A property that holds the puzzle answer
         /// </summary>
-        string PuzzleAnswer { get; set; }
+        public string PuzzleAnswer { get; set; }
 
         /// <summary>
         /// A property that holds the current puzzle solution so far
         /// </summary>
         string PuzzleSoFar { get; set; }
+
+        public Puzzle(string puzzle)
+        {
+            PuzzleAnswer = puzzle;
+        }
 
         /// <summary>
         /// A method to check whether the passed guessed word <paramref name="phrase"/> matches the puzzle or no
