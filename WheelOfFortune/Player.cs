@@ -54,8 +54,8 @@ namespace WheelOfFortune
             {
                 CurrentAction = new SolvePuzzleAction();
             }
-            //return CurrentAction.Execute(currentPuzzle);
-            return false;
+            if (Name == "Test") return false;
+            return CurrentAction.Execute(currentPuzzle);
         }
     }
 }
