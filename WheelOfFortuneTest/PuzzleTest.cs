@@ -38,7 +38,10 @@ namespace WheelOfFortuneTest
         {
             Puzzle puzzle = new Puzzle("Welcome to Microsoft Leap");
 
-            puzzle.UpdatePuzzleSoFar('W');
+            puzzle.UpdatePuzzleSoFar('t');
+            Assert.AreEqual("******* t* ********t ****", puzzle.PuzzleSoFar);
+
+            puzzle.UpdatePuzzleSoFar('w');
             Assert.AreEqual("W****** t* ********t ****", puzzle.PuzzleSoFar);
         }
 
