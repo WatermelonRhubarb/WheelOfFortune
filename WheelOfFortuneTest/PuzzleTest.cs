@@ -11,7 +11,7 @@ namespace WheelOfFortuneTest
         {
             Puzzle currentPuzzle = new Puzzle("Welcome to Microsoft Leap");
             Assert.AreEqual("Welcome to Microsoft Leap", currentPuzzle.PuzzleAnswer);
-            Assert.AreEqual("_______ __ _________ ____", currentPuzzle.PuzzleSoFar);
+            Assert.AreEqual("******* ** ********* ****", currentPuzzle.PuzzleSoFar);
         }
     }
 }
