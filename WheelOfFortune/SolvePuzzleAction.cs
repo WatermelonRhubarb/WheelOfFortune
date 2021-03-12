@@ -36,8 +36,7 @@ namespace WheelOfFortune
                 Console.WriteLine("Please enter a valid solution to the puzzle: ");
                 PuzzleGuess = Console.ReadLine();
             }
-            // return currentPuzzle.IsPuzzleSolved(guess);
-            return true;
+            return currentPuzzle.IsPuzzleSolved(PuzzleGuess);
         }
     }
 }

@@ -49,8 +49,12 @@ namespace WheelOfFortune
         /// <returns>puzzle solved bool</returns>
         public bool IsPuzzleSolved(string phrase)
         {
-            bool isPuzzleSolved = false;
-            return isPuzzleSolved;
+            bool isSolved = (phrase.Trim().ToLower() == PuzzleAnswer.ToLower());
+            if (!isSolved)
+            {
+                Console.WriteLine($"{phrase} is incorrect!");
+            }
+            return isSolved;
         }
 
         /// <summary>
