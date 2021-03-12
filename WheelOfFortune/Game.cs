@@ -103,27 +103,22 @@ namespace WheelOfFortune
         public void StartTurn()
         {
             Console.WriteLine(CurrentPuzzle.PuzzleSoFar + "\n");
+
             ConsoleKeyInfo keyPressed;
+            int actionKey;
 
-            do
+            Console.WriteLine("Press 1 to solve the puzzle or press 2 to guess a letter.");
+            keyPressed = Console.ReadKey(true);
+            actionKey = (int)Char.GetNumericValue(keyPressed.KeyChar);
+
+            while (actionKey != 1 && actionKey != 2)
             {
-                Console.WriteLine("Press 1 to solve. Press 2 to guess a letter. Then press enter.");
+                Console.WriteLine("Invalid input! Press 1 to solve the puzzle or press 2 to guess a letter.");
                 keyPressed = Console.ReadKey(true);
-            } while (!keyPressed.Key.Equals(ConsoleKey.D1) && !keyPressed.Key.Equals(ConsoleKey.D2));
-
-            bool isPuzzleSolved = false;
-
-            switch(keyPressed.Key)
-            {
-                case ConsoleKey.D1:
-                    isPuzzleSolved = CurrentPlayer.PerformAction(0, CurrentPuzzle);
-                    break;
-                case ConsoleKey.D2:
-                    isPuzzleSolved = CurrentPlayer.PerformAction((Action.ActionType)1, CurrentPuzzle);
-                    break;
-                default:
-                    break;
+                actionKey = (int)Char.GetNumericValue(keyPressed.KeyChar);
             }
+
+            bool isPuzzleSolved = CurrentPlayer.PerformAction((Action.ActionType)actionKey - 1, CurrentPuzzle);
             if (isPuzzleSolved)
             {
                 EndGame();

@@ -47,7 +47,15 @@ namespace WheelOfFortune
         /// </summary>
         public bool PerformAction(Action.ActionType actionType, Puzzle currentPuzzle)
         {
-            return false;
+            if (actionType == Action.ActionType.GuessLetterAction)
+            {
+                CurrentAction = new GuessLetterAction();
+            } else if (actionType == Action.ActionType.SolvePuzzleAction)
+            {
+                CurrentAction = new SolvePuzzleAction();
+            }
+            if (Name == "Test") return false;
+            return CurrentAction.Execute(currentPuzzle);
         }
     }
 }
