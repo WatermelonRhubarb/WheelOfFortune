@@ -18,10 +18,22 @@ namespace WheelOfFortune
         /// </summary>
         public string PuzzleSoFar { get; set; }
 
-
         public Puzzle(string puzzle)
         {
             PuzzleAnswer = puzzle;
+            PuzzleSoFar = "";
+            //string punctuation = " .?!,'";
+            foreach (char character in PuzzleAnswer)
+            {
+                //if (punctuation.Contains(character))
+                if (character == ' ')
+                {
+                    PuzzleSoFar += character;
+                } else
+                {
+                    PuzzleSoFar += '*';
+                }
+            }
         }
 
         /// <summary>
