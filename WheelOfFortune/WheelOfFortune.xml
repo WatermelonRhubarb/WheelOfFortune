@@ -185,7 +185,7 @@
             <param name="letter">passed guessed letter</param>
             <returns>letter in puzzle bool</returns>
         </member>
-        <member name="M:WheelOfFortune.Puzzle.UpdateCurrentPuzzle(System.Char)">
+        <member name="M:WheelOfFortune.Puzzle.UpdatePuzzleSoFar(System.Char)">
             <summary>
             A method to update the current puzzle whena right letter <paramref name="letter"/> suggestion is passed
             </summary>

@@ -1,4 +1,6 @@
-﻿using System;
+﻿using System.Text;
+
+using System;
 using System.Collections;
 
 namespace WheelOfFortune
@@ -121,22 +123,25 @@ namespace WheelOfFortune
         /// A method to update the current puzzle whena right letter <paramref name="letter"/> suggestion is passed
         /// </summary>
         /// <param name="letter">existing passed letter</param>
-        public void UpdateCurrentPuzzle(char letter)
+        public void UpdatePuzzleSoFar(char letter)
         {
-            char[] puzzleAnswerLettersList = PuzzleAnswer.ToCharArray();
-            char[] puzzleSoFarLettersList = PuzzleSoFar.ToCharArray();
-            for (int i =0;i<= puzzleAnswerLettersList.Length-1;i++ )
+            var updatedPuzzleSoFar = new StringBuilder(); ;
+            for (int index = 0; index < PuzzleAnswer.Length; index++)
             {
-                //get the index of the letter from the Puzzle Answer
-                if (letter == puzzleAnswerLettersList[i])
+                char correctLetter = PuzzleAnswer[index];
+                if (char.ToLower(letter) == char.ToLower(correctLetter))
                 {
-                    //add the correctly guessed letter in the same index in the puzzle so far
-                    puzzleSoFarLettersList[i] = letter;
+                    updatedPuzzleSoFar.Append(correctLetter);
+                }
+                else
+                {
+                    updatedPuzzleSoFar.Append(PuzzleSoFar[index]);
                 }
             }
-            //update the puzzle so far after replacing the letter underscores
-            PuzzleSoFar = string.Concat(puzzleSoFarLettersList);
-            Console.WriteLine(PuzzleSoFar);
+
+            PuzzleSoFar = updatedPuzzleSoFar.ToString();
+
+            return;
         }
     }
 }
