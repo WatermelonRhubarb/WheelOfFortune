@@ -31,13 +31,12 @@ namespace WheelOfFortune
         public override bool Execute(Puzzle currentPuzzle)
         {
             Console.WriteLine("What is your solution to the puzzle?");
-            while (this.PuzzleGuess.Length == 0)
+            while (PuzzleGuess.Length == 0)
             {
                 Console.WriteLine("Please enter a valid solution to the puzzle: ");
-                this.PuzzleGuess = Console.ReadLine();
+                PuzzleGuess = Console.ReadLine();
             }
-            // return currentPuzzle.IsPuzzleSolved(guess);
-            return true;
+            return currentPuzzle.IsPuzzleSolved(PuzzleGuess);
         }
     }
 }
