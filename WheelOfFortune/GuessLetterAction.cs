@@ -9,7 +9,7 @@ namespace WheelOfFortune
     /// <summary>
     ///  A Class for the Guess Letter Action Type
     /// </summary>
-    class GuessLetterAction : Action
+    public class GuessLetterAction : Action
     {
         /// <summary>
         /// A property for the Letter Guess
