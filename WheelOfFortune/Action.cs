@@ -8,12 +8,13 @@
     {
         /// <summary>
         /// Enumration for the different action types performed by the player
-        /// solving the puzzle,guessing a letter and spin the whels
+        /// solving the puzzle,guessing a letter and spin the wheels
         /// </summary>
-        public enum ActionType {
-            SolvePuzzleAction = 1,
-            GuessLetterAction = 2,
-            SpinTheWheelAction = 3
+        public enum ActionType
+        {
+            SolvePuzzleAction,
+            GuessLetterAction,
+            SpinTheWheelAction
         }
 
         /// <summary>
