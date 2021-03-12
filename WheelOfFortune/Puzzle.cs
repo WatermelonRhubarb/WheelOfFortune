@@ -31,7 +31,7 @@ namespace WheelOfFortune
                     PuzzleSoFar += character;
                 } else
                 {
-                    PuzzleSoFar += '_';
+                    PuzzleSoFar += '*';
                 }
             }
         }
