@@ -3,7 +3,7 @@
     /// <summary>
     /// A class that holds the Player's Details
     /// </summary>
-    class Player
+    public class Player
     {
         /// <summary>
         /// A property holding a player name
@@ -23,7 +23,7 @@
         /// <summary>
         /// A Property of type Action holding the Current Action selected by the Player
         /// </summary>
-        Action CurrentAction { get; set; }
+        public Action CurrentAction { get; set; }
 
         /// <summary>
         /// A method to perform a specific action  on a passed puzzle (solve the puzzle-guess a letter-spin the wheel)
@@ -33,6 +33,14 @@
         /// </summary>
         public bool PerformAction(Action.ActionType actionType, Puzzle currentPuzzle)
         {
+            if (actionType == Action.ActionType.GuessLetterAction)
+            {
+                CurrentAction = new GuessLetterAction();
+            } else if (actionType == Action.ActionType.SolvePuzzleAction)
+            {
+                CurrentAction = new SolvePuzzleAction();
+            }
+            //return CurrentAction.Execute(currentPuzzle);
             return false;
         }
     }
