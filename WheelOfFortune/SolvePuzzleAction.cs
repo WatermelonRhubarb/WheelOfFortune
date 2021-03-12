@@ -6,13 +6,20 @@ namespace WheelOfFortune
     /// <summary>
     /// A Class for the Solve Puzzle Action Type
     /// </summary>
-    class SolvePuzzleAction : Action
+    public class SolvePuzzleAction : Action
     {
         /// <summary>
         /// A property for the Puzzle Guess
         /// </summary>
-        string PuzzleGuess { get; set; }
+        public string PuzzleGuess { get; set; }
 
+        /// <summary>
+        /// SolvePuzzleAction constructor initializes PuzzleGuess with an empty string
+        /// </summary>
+        public SolvePuzzleAction()
+        {
+            PuzzleGuess = "";
+        }
 
         /// <summary>
         /// The Execute Action Implementation overriding the abstract method to provide the specific implemenation for the SolveActionPuzzle type
@@ -23,7 +30,14 @@ namespace WheelOfFortune
         /// </summary>
         public override bool Execute(Puzzle currentPuzzle)
         {
-            return false;
+            Console.WriteLine("What is your solution to the puzzle?");
+            while (this.PuzzleGuess.Length == 0)
+            {
+                Console.WriteLine("Please enter a valid solution to the puzzle: ");
+                this.PuzzleGuess = Console.ReadLine();
+            }
+            // return currentPuzzle.IsPuzzleSolved(guess);
+            return true;
         }
     }
 }
