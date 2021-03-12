@@ -22,8 +22,7 @@
         /// </summary>
         public ActionType ActionTypeProperty { get; set; }
         
-        //puzzle reference object
-        // Sprint 2
+        // TODO: puzzle reference object
         // Puzzle CurrentPuzzle { get; set; }
 
 

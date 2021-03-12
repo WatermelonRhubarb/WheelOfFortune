@@ -20,11 +20,15 @@ namespace WheelOfFortune
         /// </summary>
         public string PuzzleSoFar { get; set; }
 
+        /// <summary>
+        /// Constructor initializing Puzzle instance with the input string
+        /// </summary>
+        /// <param name="puzzle"></param>
         public Puzzle(string puzzle)
         {
             PuzzleAnswer = puzzle;
             PuzzleSoFar = "";
-            //string punctuation = " .?!,'";
+            // TODO: string punctuation = " .?!,'";
             foreach (char character in PuzzleAnswer)
             {
                 //if (punctuation.Contains(character))
@@ -39,7 +43,7 @@ namespace WheelOfFortune
         }
 
         /// <summary>
-        /// 
+        /// An array holding previous guesses
         /// </summary>
         public ArrayList guessedLetters { get; set; }
         /// <summary>
@@ -67,17 +71,17 @@ namespace WheelOfFortune
         {
             char loweredLetter = letter.ToString().ToLower()[0];
             bool isLetterValidInPuzzle = false;
-            //Validation to check wether or not this letter was guessed in this puzzle before
+            // Validation to check wether or not this letter was guessed in this puzzle before
             if (!IsLetterGuessedBefore(loweredLetter))
             {
-                //if letter wasn't guessed before
-                //add the letter to the guessed letters list
+                // if letter wasn't guessed before
+                // add the letter to the guessed letters list
                 
                 guessedLetters.Add(loweredLetter);
 
 
-                //Compare guess with PuzzleSolution
-                isLetterValidInPuzzle = this.PuzzleAnswer.ToLower().Contains(loweredLetter);
+                // Compare guess with PuzzleSolution
+                isLetterValidInPuzzle = PuzzleAnswer.ToLower().Contains(loweredLetter);
                 if (isLetterValidInPuzzle)
                 {
                     Console.WriteLine("Correct Guess.");
@@ -85,7 +89,7 @@ namespace WheelOfFortune
                 else
                 {
                     
-                    Console.WriteLine("Incorrect Guess..try another letter");
+                    Console.WriteLine("Incorrect Guess...try another letter");
                 }
             }
             else
@@ -106,13 +110,13 @@ namespace WheelOfFortune
         public bool IsLetterGuessedBefore(char letter)
         {
             bool isLetterGuessedBefore = false;
-            //no letters had been guessed before
+            // no letters had been guessed before
             if (guessedLetters == null)
             {
-                //initialize the guessed letters list
+                // initialize the guessed letters list
                 guessedLetters = new ArrayList();
             }
-            //there is some letters in the guessed letters
+            // there is some letters in the guessed letters
             else
             {
                 if (guessedLetters.Contains(letter))
