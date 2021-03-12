@@ -33,7 +33,7 @@
             A class that manages the game and holds all the information about the players,round and puzzle
             </summary>
         </member>
-        <member name="P:WheelOfFortune.Game.Players">
+        <member name="F:WheelOfFortune.Game.Players">
             <summary>
             A Queue that hold the players playing the game
             </summary>
@@ -51,6 +51,11 @@
         <member name="P:WheelOfFortune.Game.CurrentPuzzle">
             <summary>
             The value of the current puzzle to be solved
+            </summary>
+        </member>
+        <member name="F:WheelOfFortune.Game.allPuzzles">
+            <summary>
+            A List to keep possible puzzles
             </summary>
         </member>
         <member name="M:WheelOfFortune.Game.StartGame">
@@ -126,6 +131,12 @@
             A Property of type Action holding the Current Action selected by the Player
             </summary>
         </member>
+        <member name="M:WheelOfFortune.Player.#ctor(System.String)">
+            <summary>
+            A constructor method signature for the Player class
+            <param name="name"></param>
+            </summary>
+        </member>
         <member name="M:WheelOfFortune.Player.PerformAction(WheelOfFortune.Action.ActionType,WheelOfFortune.Puzzle)">
             <summary>
             A method to perform a specific action  on a passed puzzle (solve the puzzle-guess a letter-spin the wheel)
@@ -174,7 +185,7 @@
             <param name="letter">passed guessed letter</param>
             <returns>letter in puzzle bool</returns>
         </member>
-        <member name="M:WheelOfFortune.Puzzle.UpdateCurrentPuzzle(System.Char)">
+        <member name="M:WheelOfFortune.Puzzle.UpdatePuzzleSoFar(System.Char)">
             <summary>
             A method to update the current puzzle whena right letter <paramref name="letter"/> suggestion is passed
             </summary>
