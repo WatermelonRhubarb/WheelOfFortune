@@ -18,7 +18,7 @@ namespace WheelOfFortuneTest
         {
             Puzzle currentPuzzle = new Puzzle("Test Puzzle");
 
-            Player currentPlayer = new Player("Player");
+            Player currentPlayer = new Player("Test");
             int playerInput = 1;
             currentPlayer.PerformAction((WheelOfFortune.Action.ActionType) playerInput - 1, currentPuzzle);
             Assert.IsInstanceOfType(currentPlayer.CurrentAction, typeof(SolvePuzzleAction));
