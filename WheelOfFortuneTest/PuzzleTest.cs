@@ -38,7 +38,10 @@ namespace WheelOfFortuneTest
         {
             Puzzle puzzle = new Puzzle("Welcome to Microsoft Leap");
 
-            puzzle.UpdatePuzzleSoFar('W');
+            puzzle.UpdatePuzzleSoFar('t');
+            Assert.AreEqual("******* t* ********t ****", puzzle.PuzzleSoFar);
+
+            puzzle.UpdatePuzzleSoFar('w');
             Assert.AreEqual("W****** t* ********t ****", puzzle.PuzzleSoFar);
         }
 
@@ -49,6 +52,17 @@ namespace WheelOfFortuneTest
 
             puzzle.UpdatePuzzleSoFar('e');
             Assert.AreEqual("*e****e ** ********* *e**", puzzle.PuzzleSoFar);
+        }
+
+        [TestMethod]
+        public void IsPuzzleSolvedTest()
+        {
+            Puzzle puzzle = new Puzzle("Welcome to Microsoft Leap");
+            Assert.IsFalse(puzzle.IsPuzzleSolved("WatermelonRhubarb"));
+            Assert.IsFalse(puzzle.IsPuzzleSolved("Welco me to Microsoft Leap"));
+            Assert.IsTrue(puzzle.IsPuzzleSolved("Welcome to Microsoft Leap"));
+            Assert.IsTrue(puzzle.IsPuzzleSolved("welCome to mIcROsoFt lEaP"));
+            Assert.IsTrue(puzzle.IsPuzzleSolved("        welCome to mIcROsoFt lEaP        "));
         }
     }
 }
