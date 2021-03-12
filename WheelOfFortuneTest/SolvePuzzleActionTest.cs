@@ -4,8 +4,11 @@ using WheelOfFortune;
 
 namespace WheelOfFortuneTest
 {
+    /// <summary>
+    ///  Unit tests for the SolvePuzzleAction class
+    /// </summary>
     [TestClass]
-    public class UnitTest1
+    public class SolvePuzzleActionTest
     {
         // Solve Puzzle Action Tests
         /// <summary>
