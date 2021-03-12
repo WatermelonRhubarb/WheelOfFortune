@@ -4,20 +4,21 @@ using WheelOfFortune;
 
 namespace WheelOfFortuneTest
 {
+    /// <summary>
+    /// Unit tests for Player class
+    /// </summary>
     [TestClass]
-    public class UnitTest1
+    public class PlayerTest
     {
-        /* Player Unit Tests */
-
         /// <summary>
         ///  Tests that the PerformAction() method of the Player class creates and sets the correct Action
         /// </summary>
         [TestMethod]
         public void PlayerPerformActionInstantiatesCorrectAction()
         {
-            Puzzle currentPuzzle = new Puzzle();
+            Puzzle currentPuzzle = new Puzzle("Test Puzzle");
 
-            Player currentPlayer = new Player();
+            Player currentPlayer = new Player("Player");
             int playerInput = 1;
             currentPlayer.PerformAction((WheelOfFortune.Action.ActionType) playerInput - 1, currentPuzzle);
             Assert.IsInstanceOfType(currentPlayer.CurrentAction, typeof(SolvePuzzleAction));
