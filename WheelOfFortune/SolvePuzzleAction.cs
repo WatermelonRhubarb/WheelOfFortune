@@ -11,8 +11,15 @@ namespace WheelOfFortune
         /// <summary>
         /// A property for the Puzzle Guess
         /// </summary>
-        string PuzzleGuess { get; set; }
+        public string PuzzleGuess { get; set; }
 
+        /// <summary>
+        /// SolvePuzzleAction constructor initializes PuzzleGuess with an empty string
+        /// </summary>
+        public SolvePuzzleAction()
+        {
+            PuzzleGuess = "";
+        }
 
         /// <summary>
         /// The Execute Action Implementation overriding the abstract method to provide the specific implemenation for the SolveActionPuzzle type
@@ -24,14 +31,12 @@ namespace WheelOfFortune
         public override bool Execute(Puzzle currentPuzzle)
         {
             Console.WriteLine("What is your solution to the puzzle?");
-            string guess = Console.ReadLine();
-            while (guess.Length == 0)
+            while (PuzzleGuess.Length == 0)
             {
                 Console.WriteLine("Please enter a valid solution to the puzzle: ");
-                guess = Console.ReadLine();
+                PuzzleGuess = Console.ReadLine();
             }
-            // return currentPuzzle.IsPuzzleSolved(guess);
-            return false;
+            return currentPuzzle.IsPuzzleSolved(PuzzleGuess);
         }
     }
 }

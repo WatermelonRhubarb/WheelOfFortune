@@ -20,8 +20,8 @@
         /// <summary>
         /// A property that carries the type of the action
         /// </summary>
-        public ActionType actionType { get; set; }
-
+        public ActionType ActionTypeProperty { get; set; }
+        
         //puzzle reference object
         // Sprint 2
         // Puzzle CurrentPuzzle { get; set; }
