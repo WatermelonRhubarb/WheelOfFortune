@@ -87,7 +87,7 @@ namespace WheelOfFortune
             if (letterValidInPuzzle)
             {
                 //update the current puzzle
-                currentPuzzle.UpdateCurrentPuzzle(this.LetterGuess);
+                currentPuzzle.UpdatePuzzleSoFar(this.LetterGuess);
             }
 
             //bool to indicate whether or not the letter is valid in puzzle(wasn't guessed before and exists in the puzzle answer)
