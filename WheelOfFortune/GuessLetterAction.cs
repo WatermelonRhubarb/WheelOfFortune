@@ -48,16 +48,24 @@ namespace WheelOfFortune
         private bool ValidateUserInputNotMoreThanOneLetter(string userInput)
         {
             bool valid = false;
-            while (userInput.Length > 1)
+            if(userInput.Length == 1)
             {
-                Console.WriteLine("No Multi letters guessing allowed.Please guess only one letter..");
-                userInput = Console.ReadLine();
-                valid = ValidateUserInputNotEmpty(userInput);
-                if (valid)
+                valid = true;
+            }
+            else
+            {
+                while (userInput.Length > 1)
                 {
-                    valid = ValidateUserInputNotMoreThanOneLetter(userInput);
+                    Console.WriteLine("No Multi letters guessing allowed.Please guess only one letter..");
+                    userInput = Console.ReadLine();
+                    valid = ValidateUserInputNotEmpty(userInput);
+                    if (valid)
+                    {
+                        valid = ValidateUserInputNotMoreThanOneLetter(userInput);
+                    }
                 }
             }
+            
             return valid;
         }
         /// <summary>
@@ -90,8 +98,8 @@ namespace WheelOfFortune
                 currentPuzzle.UpdatePuzzleSoFar(this.LetterGuess);
             }
 
-            //bool to indicate whether or not the letter is valid in puzzle(wasn't guessed before and exists in the puzzle answer)
-            return letterValidInPuzzle; 
+            // return false to inicate the puzzle is not solved yet
+            return false; 
         }
     }
 }

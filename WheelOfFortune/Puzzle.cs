@@ -82,7 +82,7 @@ namespace WheelOfFortune
                 }
                 else
                 {
-                    //else display yay!you're correct message and return true
+                    
                     Console.WriteLine("Incorrect Guess..try another letter");
                 }
             }
