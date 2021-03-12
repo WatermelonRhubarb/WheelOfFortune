@@ -65,24 +65,26 @@ namespace WheelOfFortune
         /// <returns>letter valid to be added in puzzle bool</returns>
         public bool IsLetterValidInPuzzle(char letter)
         {
+            char loweredLetter = letter.ToString().ToLower()[0];
             bool isLetterValidInPuzzle = false;
             //Validation to check wether or not this letter was guessed in this puzzle before
-            if (!IsLetterGuessedBefore(letter))
+            if (!IsLetterGuessedBefore(loweredLetter))
             {
                 //if letter wasn't guessed before
                 //add the letter to the guessed letters list
-                guessedLetters.Add(letter);
+                
+                guessedLetters.Add(loweredLetter);
 
 
                 //Compare guess with PuzzleSolution
-                isLetterValidInPuzzle = this.PuzzleAnswer.Contains(letter);
+                isLetterValidInPuzzle = this.PuzzleAnswer.ToLower().Contains(loweredLetter);
                 if (isLetterValidInPuzzle)
                 {
                     Console.WriteLine("Correct Guess.");
                 }
                 else
                 {
-                    //else display yay!you're correct message and return true
+                    
                     Console.WriteLine("Incorrect Guess..try another letter");
                 }
             }

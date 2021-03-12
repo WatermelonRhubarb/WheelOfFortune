@@ -23,42 +23,82 @@ namespace WheelOfFortune
         /// </summary>
         public char LetterGuess { get; set; }
 
-        private bool validateUserInput(string userInput)
+        private string validateUserInput(string userInput)
         {
-            bool valid = false;
-            valid = ValidateUserInputNotEmpty(userInput);
-            if (valid)
+            string validUserInput = "";
+            if (userInput.Length != 1)
             {
-                valid = ValidateUserInputNotMoreThanOneLetter(userInput);
+                Console.WriteLine("Invalid Guess.Please enter a non empty ,non multi letter");
+                userInput = Console.ReadLine();
+                return userInput;
             }
-            return valid;
-        }
-        private bool ValidateUserInputNotEmpty(string userInput)
-        {
-            while (userInput.Length == 0)
+            else
+            {
+                return userInput;
+            }
+            /*string validUserInput = "";
+            bool validNotEmpty = false;
+            bool validNotMulti = false;
+            validNotEmpty = ValidateUserInputNotEmpty(userInput);
+            if (validNotEmpty)
+            {
+                validNotMulti = ValidateUserInputNotMoreThanOneLetter(userInput);
+            }
+            else//empty letter guessed
             {
                 Console.WriteLine("Please Guess a letter");
                 userInput = Console.ReadLine();
-                ValidateUserInputNotEmpty(userInput);
+                validUserInput = validateUserInput(userInput);
+            }
+            if(validUserInput.Length == 1)
+            {
+                return validUserInput;
+            }
+            if (validNotMulti)
+            {
+                validUserInput = userInput.ToLower();
+                return validUserInput;
+            }
+            else
+            {
+                Console.WriteLine("No Multi letters guessing allowed.Please guess only one letter:");
+                userInput = Console.ReadLine();
+                validUserInput = validateUserInput(userInput);
+               
+            }*/
+            return validUserInput;
+
+
+        }
+        private bool ValidateUserInputNotEmpty(string userInput)
+        {
+            bool validNotEmpty = false;
+            if (userInput.Length == 0)
+            {
+                validNotEmpty = false;
+            }
+            else
+            {
+                validNotEmpty = true;
             }
             
-            //once the user enter non empty input return valid
-            return true;
+           
+            return validNotEmpty;
         }
         private bool ValidateUserInputNotMoreThanOneLetter(string userInput)
         {
-            bool valid = false;
-            while (userInput.Length > 1)
+            bool validNotMulti = false;
+           
+            if(userInput.Length == 1)
             {
-                Console.WriteLine("No Multi letters guessing allowed.Please guess only one letter..");
-                userInput = Console.ReadLine();
-                valid = ValidateUserInputNotEmpty(userInput);
-                if (valid)
-                {
-                    valid = ValidateUserInputNotMoreThanOneLetter(userInput);
-                }
+                validNotMulti = true;
             }
-            return valid;
+            else
+            {
+                validNotMulti = false;
+            }
+            
+            return validNotMulti;
         }
         /// <summary>
         /// The Execute Action Implementation overriding the abstract method to provide the specific implemenation for the GuessLetterAction type
@@ -68,18 +108,17 @@ namespace WheelOfFortune
         /// </summary>
         public override bool Execute(Puzzle currentPuzzle)
         {
-            bool valid = false;
+            string validUserInput = "";
+          //  bool valid = false;
             if(LetterGuess == '\0')
             {
                 Console.WriteLine("Start Guessing: Enter a letter:");
                 string userInput = Console.ReadLine();
-                valid = validateUserInput(userInput);
+                validUserInput = validateUserInput(userInput.ToLower());
                 //validity (non empty and one letter)
-                if (valid)
-                {
-                    this.LetterGuess = userInput[0];
-                }
-                
+                char loweredLetter = validUserInput[0].ToString().ToLower()[0];
+                this.LetterGuess = loweredLetter;
+
             }
             //check is letter valid in puzzle (wasn't guessed before and exists in the puzzle answer)
             bool letterValidInPuzzle = currentPuzzle.IsLetterValidInPuzzle(this.LetterGuess);
@@ -90,8 +129,8 @@ namespace WheelOfFortune
                 currentPuzzle.UpdatePuzzleSoFar(this.LetterGuess);
             }
 
-            //bool to indicate whether or not the letter is valid in puzzle(wasn't guessed before and exists in the puzzle answer)
-            return letterValidInPuzzle; 
+            // return false to inicate the puzzle is not solved yet
+            return false; 
         }
     }
 }
