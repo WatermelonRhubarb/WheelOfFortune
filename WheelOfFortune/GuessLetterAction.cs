@@ -25,7 +25,6 @@ namespace WheelOfFortune
 
         private string validateUserInput(string userInput)
         {
-            string validUserInput = "";
             if (userInput.Length != 1)
             {
                 Console.WriteLine("Invalid Guess.Please enter a non empty ,non multi letter");
@@ -36,39 +35,6 @@ namespace WheelOfFortune
             {
                 return userInput;
             }
-            /*string validUserInput = "";
-            bool validNotEmpty = false;
-            bool validNotMulti = false;
-            validNotEmpty = ValidateUserInputNotEmpty(userInput);
-            if (validNotEmpty)
-            {
-                validNotMulti = ValidateUserInputNotMoreThanOneLetter(userInput);
-            }
-            else//empty letter guessed
-            {
-                Console.WriteLine("Please Guess a letter");
-                userInput = Console.ReadLine();
-                validUserInput = validateUserInput(userInput);
-            }
-            if(validUserInput.Length == 1)
-            {
-                return validUserInput;
-            }
-            if (validNotMulti)
-            {
-                validUserInput = userInput.ToLower();
-                return validUserInput;
-            }
-            else
-            {
-                Console.WriteLine("No Multi letters guessing allowed.Please guess only one letter:");
-                userInput = Console.ReadLine();
-                validUserInput = validateUserInput(userInput);
-               
-            }*/
-            return validUserInput;
-
-
         }
         private bool ValidateUserInputNotEmpty(string userInput)
         {
@@ -115,21 +81,21 @@ namespace WheelOfFortune
                 Console.WriteLine("Start Guessing: Enter a letter:");
                 string userInput = Console.ReadLine();
                 validUserInput = validateUserInput(userInput.ToLower());
-                //validity (non empty and one letter)
+                // validity (non empty and one letter)
                 char loweredLetter = validUserInput[0].ToString().ToLower()[0];
                 this.LetterGuess = loweredLetter;
 
             }
-            //check is letter valid in puzzle (wasn't guessed before and exists in the puzzle answer)
-            bool letterValidInPuzzle = currentPuzzle.IsLetterValidInPuzzle(this.LetterGuess);
+            // check is letter valid in puzzle (wasn't guessed before and exists in the puzzle answer)
+            bool letterValidInPuzzle = currentPuzzle.IsLetterValidInPuzzle(LetterGuess);
             //check does the guessed letter exist in the Puzzle
             if (letterValidInPuzzle)
             {
-                //update the current puzzle
-                currentPuzzle.UpdatePuzzleSoFar(this.LetterGuess);
+                // update the current puzzle
+                currentPuzzle.UpdatePuzzleSoFar(LetterGuess);
             }
 
-            // return false to inicate the puzzle is not solved yet
+            // return false to indicate the puzzle is not solved yet
             return false; 
         }
     }

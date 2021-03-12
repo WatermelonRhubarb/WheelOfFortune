@@ -1,7 +1,7 @@
 ﻿namespace WheelOfFortune
 {
     /// <summary>
-    /// A class that holds the round details
+    /// TODO: A class that holds the round details
     /// </summary>
     class Round
     {

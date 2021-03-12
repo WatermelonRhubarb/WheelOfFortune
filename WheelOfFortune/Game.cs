@@ -45,8 +45,6 @@ namespace WheelOfFortune
             "You know nothing Jon Snow"
         };
 
-        public Game() {}
-
         /// <summary>
         /// A method that initialies the Game properties and start the turn
         /// </summary>
@@ -81,11 +79,11 @@ namespace WheelOfFortune
                 name = Console.ReadLine();
             }
 
-            Console.WriteLine($"Hiyaa, {name}!");
+            Console.WriteLine($"Hiya, {name}!");
 
             CurrentPlayer = new Player(name);
 
-            // *** add push into queue logic here ***
+            // TODO: Use Players queue to hold multiple players
         }
 
 
