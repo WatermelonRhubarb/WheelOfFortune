@@ -2,12 +2,12 @@
 namespace WheelOfFortune
 {
     /// <summary>
-    /// A class that handles prompting and reading input from the console
+    /// A class that handles writing to and reading from the console
     /// </summary>
     public static class Prompt
     {
         /// <summary>
-        /// A method to welcome the user the the game and wait for a keypress before continuing
+        /// A method to welcome the user to the game and waits for a keypress before continuing
         /// </summary>
         public static void WelcomeMessage()
         {
@@ -15,7 +15,7 @@ namespace WheelOfFortune
         }
 
         /// <summary>
-        /// A method to get a new players name
+        /// A method to get a new player's name
         /// <returns>string name of player</returns>
         /// </summary>
         public static string CreatePlayer()
@@ -25,7 +25,7 @@ namespace WheelOfFortune
 
         /// <summary>
         /// A method to ask if another player will be added to game
-        /// <returns>char of 'y' or 'n' to indicate if an another player will be added</returns>
+        /// <returns>char of 'y' or 'n' to indicate if another player will be added</returns>
         /// </summary>
         public static char AddAdditionalPlayer()
         {
@@ -53,10 +53,10 @@ namespace WheelOfFortune
 
         /// <summary>
         /// A method to get the phrase or letter guess from the user
-        /// <param name="actionType">the action type of SolvePuzzleAction or GuessLetterAction</param>
-        /// <returns>string holding the guess from the user</returns>
+        /// <param name="action">the action type of SolvePuzzleAction or GuessLetterAction</param>
+        /// <returns>dynamic can return a string or char holding the guess from the user</returns>
         /// </summary>
-        public static T PromptAction(Action actionType)
+        public static dynamic PromptAction(Action action)
         {
             return "";
         }
@@ -69,5 +69,6 @@ namespace WheelOfFortune
         {
 
         }
+
     }
 }
