@@ -25,7 +25,9 @@ namespace WheelOfFortune
 
             while (string.IsNullOrEmpty(name))
             {
-                Console.Write("\nVanna White would like to know your name. \nPlease input your name once more so we can play the game!: ");
+                InvalidInputError error = new InvalidInputError((InvalidInputError.ErrorTypes)0);
+                Console.WriteLine($"\n{error.ErrorMessage}");
+                Console.Write("Vanna White would like to know your name. \nPlease input your name once more so we can play the game!: ");
                 name = Console.ReadLine();
             }
 
