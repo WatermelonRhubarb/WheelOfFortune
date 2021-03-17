@@ -36,6 +36,8 @@ namespace WheelOfFortune
 
             while(!isValidInput)
             {
+                InvalidInputError error = new InvalidInputError((InvalidInputError.ErrorTypes)2);
+                Console.WriteLine($"\n{error.ErrorMessage}");
                 Console.Write("Would you like to add an additional player? (y/n): ");
                 answer = Console.ReadLine();
                 isValidInput = answer.ToLower() == "y" || answer.ToLower() == "n";
