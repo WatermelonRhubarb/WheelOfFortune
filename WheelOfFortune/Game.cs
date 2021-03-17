@@ -92,7 +92,17 @@ namespace WheelOfFortune
         /// </summary>
         public void StartRound()
         {
-
+            // initialize current puzzle
+            CurrentPuzzle = new Puzzle();
+            // initialize current round
+            CurrentRound = new Round(CurrentPuzzle);
+            // so long as CurrentRound.Winner == null, call StartTurn()
+            while(CurrentRound.Winner == null)
+            {
+                StartTurn();
+            }
+            // add CurrentRound to Round <List> 
+            Rounds.Add(CurrentRound);
         }
 
         /// <summary>
