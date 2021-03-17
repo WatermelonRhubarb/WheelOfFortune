@@ -52,18 +52,13 @@ namespace WheelOfFortune
         {
             Prompt.WelcomeMessage();
 
-            string person = Prompt.CreatePlayer();
-            Player newPlayer = new(person);
-            Players.Enqueue(newPlayer);
-
-            char addNewPlayerResponse = Prompt.AddAdditionalPlayer();
-            while (addNewPlayerResponse == 'y')
+            do
             {
-                person = Prompt.CreatePlayer();
-                newPlayer = new(person);
+                string person = Prompt.CreatePlayer();
+                Player newPlayer = new(person);
                 Players.Enqueue(newPlayer);
-                addNewPlayerResponse = Prompt.AddAdditionalPlayer();
             }
+            while (Prompt.AddAdditionalPlayer() == 'y');
 
             while (Rounds.Count < 3)
             {
