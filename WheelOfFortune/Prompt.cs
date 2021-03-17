@@ -98,6 +98,15 @@ namespace WheelOfFortune
         /// </summary>
         public static dynamic PromptAction(Action action)
         {
+            if (action.ActionTypeProperty == Action.ActionType.GuessLetterAction)
+            {
+                Console.WriteLine("Start Guessing: Enter a letter:");
+            }
+            else if(action.ActionTypeProperty == Action.ActionType.SolvePuzzleAction)
+            {
+                Console.WriteLine("What is your solution to the puzzle?");
+            }
+            
             return "";
         }
 
