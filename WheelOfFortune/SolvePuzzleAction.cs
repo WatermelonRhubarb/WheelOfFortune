@@ -18,6 +18,7 @@ namespace WheelOfFortune
         /// </summary>
         public SolvePuzzleAction()
         {
+            ActionTypeProperty = ActionType.SolvePuzzleAction;
             PuzzleGuess = "";
         }
 
@@ -30,7 +31,9 @@ namespace WheelOfFortune
         /// </summary>
         public override bool Execute(Puzzle currentPuzzle)
         {
-            Console.WriteLine("What is your solution to the puzzle?");
+            //calling the Prompt Handler to prompt the user to solve the puzzle
+            Prompt.PromptAction(this);
+            
             while (PuzzleGuess.Length == 0)
             {
                 Console.WriteLine("Please enter a valid solution to the puzzle: ");

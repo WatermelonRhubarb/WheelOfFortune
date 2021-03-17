@@ -78,7 +78,9 @@ namespace WheelOfFortune
           //  bool valid = false;
             if(LetterGuess == '\0')
             {
-                Console.WriteLine("Start Guessing: Enter a letter:");
+                //calling the Prompt Handler to prompt the user to guess a letter
+                Prompt.PromptAction(this);
+                //Console.WriteLine("Start Guessing: Enter a letter:");
                 string userInput = Console.ReadLine();
                 validUserInput = validateUserInput(userInput.ToLower());
                 // validity (non empty and one letter)
