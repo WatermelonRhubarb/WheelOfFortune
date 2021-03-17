@@ -1,7 +1,7 @@
-﻿using System.Text;
-
-using System;
+﻿using System;
+using System.Text;
 using System.Collections;
+using System.Collections.Generic;
 
 namespace WheelOfFortune
 {
@@ -24,9 +24,9 @@ namespace WheelOfFortune
         /// Constructor initializing Puzzle instance with the input string
         /// </summary>
         /// <param name="puzzle"></param>
-        public Puzzle(string puzzle)
+        public Puzzle()
         {
-            PuzzleAnswer = puzzle;
+            PuzzleAnswer = GenerateNewPuzzle();
             PuzzleSoFar = "";
             // TODO: string punctuation = " .?!,'";
             foreach (char character in PuzzleAnswer)
@@ -46,6 +46,23 @@ namespace WheelOfFortune
         /// An array holding previous guesses
         /// </summary>
         public ArrayList guessedLetters { get; set; }
+        
+        ///<summary></summary>
+        private string GenerateNewPuzzle()
+        {
+            List<string> allPuzzles = new List<string>()
+            {
+                "Hello World",
+                "For the night is dark and full of terrors",
+                "For the stormcloaks",
+                "I wish you good fortune in the wars to come",
+                "You know nothing Jon Snow"
+            };
+            
+            Random rand = new Random();
+            return allPuzzles[rand.Next(allPuzzles.Count)];
+        }
+
         /// <summary>
         /// A method to check whether the passed guessed word <paramref name="phrase"/> matches the puzzle or no
         /// </summary>
