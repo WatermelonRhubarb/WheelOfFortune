@@ -49,7 +49,18 @@ namespace WheelOfFortune
         /// </summary>
         public static char AddAdditionalPlayer()
         {
-            return ' ';
+            Console.Write("\nWould you like to add an additional player? (y/n): ");
+            string answer = Console.ReadLine();
+
+            while(answer.ToLower() != "y" && answer.ToLower() != "n")
+            {
+                InvalidInputError error = new InvalidInputError((InvalidInputError.ErrorTypes)2);
+                Console.WriteLine($"\n{error.ErrorMessage}");
+                Console.Write("Would you like to add an additional player? (y/n): ");
+                answer = Console.ReadLine();
+            }
+
+            return answer.ToLower()[0];
         }
 
         /// <summary>
