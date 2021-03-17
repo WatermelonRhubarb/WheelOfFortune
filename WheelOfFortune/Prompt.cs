@@ -1,4 +1,5 @@
-﻿
+﻿using System;
+
 namespace WheelOfFortune
 {
     /// <summary>
@@ -11,7 +12,13 @@ namespace WheelOfFortune
         /// </summary>
         public static void WelcomeMessage()
         {
+            Console.WriteLine("\nPress any button to start the game!");
+            Console.ReadKey(true);
 
+            Console.WriteLine("\n------------------------------------------------");
+            Console.WriteLine("\n\tWelcome to Wheel of Fortune!");
+            Console.WriteLine("\n------------------------------------------------");
+            return;
         }
 
         /// <summary>
