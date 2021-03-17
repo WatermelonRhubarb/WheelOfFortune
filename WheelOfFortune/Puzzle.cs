@@ -26,7 +26,7 @@ namespace WheelOfFortune
         /// <param name="puzzle"></param>
         public Puzzle()
         {
-            PuzzleAnswer = puzzle;
+            PuzzleAnswer = GenerateNewPuzzle();
             PuzzleSoFar = "";
             // TODO: string punctuation = " .?!,'";
             foreach (char character in PuzzleAnswer)
