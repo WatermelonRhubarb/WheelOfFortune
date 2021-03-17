@@ -50,18 +50,28 @@ namespace WheelOfFortune
         /// </summary>
         public void StartGame()
         {
-            Console.WriteLine("Press any button to start the game!");
-            Console.ReadKey(true);
-            AddPlayer();
+            Prompt.WelcomeMessage();
 
-            Random random = new();
-            int index = random.Next(0, allPuzzles.Count);
-            string nextPuzzle = allPuzzles[index];
-            Puzzle puzzle = new(nextPuzzle);
-            CurrentPuzzle = puzzle;
+            string person = Prompt.CreatePlayer();
+            Player player = new Player(person);
+            Players.Enqueue(player);
 
-            StartTurn();
-        } 
+            char addNewPlayerResponse = Prompt.AddAdditionalPlayer();
+            while (addNewPlayerResponse == 'y')
+            {
+                person = Prompt.CreatePlayer();
+                player = new Player(person);
+                Players.Enqueue(player);
+                addNewPlayerResponse = Prompt.AddAdditionalPlayer();
+            }
+
+            while (Rounds.Count < 3)
+            {
+                StartRound();
+            }
+
+            EndGame();
+        }
 
         /// <summary>
         /// A method that initializes Player and its properties
