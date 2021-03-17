@@ -1,4 +1,5 @@
-﻿
+﻿using System;
+
 namespace WheelOfFortune
 {
     /// <summary>
@@ -11,7 +12,13 @@ namespace WheelOfFortune
         /// </summary>
         public static void WelcomeMessage()
         {
+            Console.WriteLine("\nPress any button to start the game!");
+            Console.ReadKey(true);
 
+            Console.WriteLine("\n------------------------------------------------");
+            Console.WriteLine("\n\tWelcome to Wheel of Fortune!");
+            Console.WriteLine("\n------------------------------------------------");
+            return;
         }
 
         /// <summary>
@@ -20,7 +27,20 @@ namespace WheelOfFortune
         /// </summary>
         public static string CreatePlayer()
         {
-            return "";
+            Console.Write("\nWhat should we call you?: ");
+            string name = Console.ReadLine();
+
+            while (string.IsNullOrEmpty(name))
+            {
+                InvalidInputError error = new InvalidInputError(InvalidInputError.ErrorTypes.EmptyInput);
+                Console.WriteLine($"\n{error.ErrorMessage}");
+                Console.Write("Vanna White would like to know your name. \nPlease input your name once more so we can play the game!: ");
+                name = Console.ReadLine();
+            }
+
+            Console.WriteLine($"\nWelcome to the game {name}!");
+
+            return name;
         }
 
         /// <summary>
@@ -29,7 +49,18 @@ namespace WheelOfFortune
         /// </summary>
         public static char AddAdditionalPlayer()
         {
-            return ' ';
+            Console.Write("\nWould you like to add an additional player? (y/n): ");
+            string answer = Console.ReadLine();
+
+            while(answer.ToLower() != "y" && answer.ToLower() != "n")
+            {
+                InvalidInputError error = new InvalidInputError(InvalidInputError.ErrorTypes.InvalidInputYOrN);
+                Console.WriteLine($"\n{error.ErrorMessage}");
+                Console.Write("Would you like to add an additional player? (y/n): ");
+                answer = Console.ReadLine();
+            }
+
+            return answer.ToLower()[0];
         }
 
         /// <summary>
@@ -39,7 +70,16 @@ namespace WheelOfFortune
         /// </summary>
         public static void StartTurn(Player currentPlayer, Puzzle currentPuzzle)
         {
+            int spacerCount = currentPuzzle.PuzzleSoFar.Length + 20;
+            string spacer = new string('-', spacerCount);
+            string buffer = new string(' ', 9);
+            Console.WriteLine("\n" + spacer);
+            Console.WriteLine($"|{buffer}{currentPuzzle.PuzzleSoFar}{buffer}|");
+            Console.WriteLine(spacer + "\n");
 
+            Console.WriteLine($"Current Player's Turn: {currentPlayer.Name}\n");
+
+            return;
         }
 
         /// <summary>
@@ -58,6 +98,15 @@ namespace WheelOfFortune
         /// </summary>
         public static dynamic PromptAction(Action action)
         {
+            if (action.ActionTypeProperty == Action.ActionType.GuessLetterAction)
+            {
+                Console.WriteLine("Start Guessing: Enter a letter:");
+            }
+            else if(action.ActionTypeProperty == Action.ActionType.SolvePuzzleAction)
+            {
+                Console.WriteLine("What is your solution to the puzzle?");
+            }
+            
             return "";
         }
 
