@@ -102,7 +102,7 @@ namespace WheelOfFortune
                 StartTurn();
             }
             // add CurrentRound to Round <List> 
-            Round.Add(CurrentRound);
+            Rounds.Add(CurrentRound);
         }
 
         /// <summary>
