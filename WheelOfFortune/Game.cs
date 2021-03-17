@@ -92,6 +92,19 @@ namespace WheelOfFortune
         /// </summary>
         public void StartRound()
         {
+            // initialize current puzzle
+            // do I need to pass in the string puzzle param? I think so, going to leave it here for now
+            CurrentPuzzle = new Puzzle(puzzle);
+            // initialize current round
+            CurrentRound = new Round(currentPuzzle);
+            // so long as CurrentRound.Winner == null, call StartTurn()
+            while(CurrentRound.Winner == null)
+            {
+                // invoke StartTurn() but I feel like I have to refactor this because something is missing
+                StartTurn();
+            }
+            // add CurrentRound to Round <List> 
+            Round.Add(CurrentRound);
 
         }
 
