@@ -84,7 +84,7 @@ namespace WheelOfFortune
 
         /// <summary>
         /// A method to ask user for the type of action they will take
-        /// <returns>char of '1' or '2' to indcate solving or guessing a letter</returns>
+        /// <returns>char of '1' or '2' to indicate solving or guessing a letter</returns>
         /// </summary>
         public static char GetActionType()
         {
@@ -101,18 +101,19 @@ namespace WheelOfFortune
             dynamic userInput=null;
             if (action.ActionTypeProperty == Action.ActionType.GuessLetterAction)
             {
-                Console.WriteLine("Start Guessing: Enter a letter:");
+                Console.Write("Start Guessing:");
+                Console.Write("Enter a letter:");
                 userInput = Console.ReadLine();
                 userInput = validateUserGuess(userInput);
                 userInput = userInput[0];
             }
             else if(action.ActionTypeProperty == Action.ActionType.SolvePuzzleAction)
             {
-                Console.WriteLine("What is your solution to the puzzle?");
+                Console.Write("What is your solution to the puzzle?");
                 userInput = Console.ReadLine();
                 while (userInput.Length == 0)
                 {
-                    userInput = Prompt.PromptInValidEmptyInput();
+                    userInput = Prompt.PromptInValidEmptyInputAsPuzzleSolution();
                 }
             }
             
@@ -121,25 +122,45 @@ namespace WheelOfFortune
         private static string validateUserGuess(string userInput)
         {
             userInput = userInput.ToLower();
-            if (userInput.Length != 1)
+            InvalidInputError error = null;
+            bool valid = false;
+            do
             {
-                Console.WriteLine("Invalid Guess.Please enter a Non Empty,Single letter:");
-                userInput = Console.ReadLine();
-                return userInput;
+                if(userInput.Length != 1)
+                {
+                    if (userInput.Length == 1)//checking if the input is empty
+                    {
+                        error = new InvalidInputError(InvalidInputError.ErrorTypes.EmptyInput);
+
+                    }
+                    else if (userInput.Length > 1)//checking if the input is Multi Letters
+                    {
+                        error = new InvalidInputError(InvalidInputError.ErrorTypes.ReceivedStringExpectedChar);
+                    }
+                    Console.Write($"\n{error.ErrorMessage}");
+                    valid = false;
+                    Console.Write("Enter a letter:");
+                    userInput = Console.ReadLine();
+                }
+                else
+                {
+                    valid = true;
+                }
             }
-            else
-            {
-                return userInput;
-            }
+            while (!valid);
+            
+            return userInput;
         }
 
 
         /// <summary>
-        /// A method to prompt to the user that the input is invalid
+        /// A method to prompt to the user that the input is invalid if an empty string is entered as a puzzle solution
         /// </summary>
-        public static string PromptInValidEmptyInput()
+        public static string PromptInValidEmptyInputAsPuzzleSolution()
         {
-            Console.WriteLine("The Input can't be empty.Please enter a valid solution to the puzzle: ");
+            InvalidInputError error = new InvalidInputError(InvalidInputError.ErrorTypes.EmptyInput);
+            Console.Write($"\n{error.ErrorMessage}");
+            Console.Write("Please enter a valid solution to the puzzle: ");
             string puzzleSolution = Console.ReadLine().ToLower();
             return puzzleSolution;
         }
@@ -150,7 +171,7 @@ namespace WheelOfFortune
         /// </summary>
         public static void GameOverMessage(Player[] winners)
         {
-
+            
         }
 
     }
