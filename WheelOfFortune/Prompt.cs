@@ -32,7 +32,7 @@ namespace WheelOfFortune
 
             while (string.IsNullOrEmpty(name))
             {
-                InvalidInputError error = new InvalidInputError((InvalidInputError.ErrorTypes)0);
+                InvalidInputError error = new InvalidInputError(InvalidInputError.ErrorTypes.EmptyInput);
                 Console.WriteLine($"\n{error.ErrorMessage}");
                 Console.Write("Vanna White would like to know your name. \nPlease input your name once more so we can play the game!: ");
                 name = Console.ReadLine();
@@ -54,7 +54,7 @@ namespace WheelOfFortune
 
             while(answer.ToLower() != "y" && answer.ToLower() != "n")
             {
-                InvalidInputError error = new InvalidInputError((InvalidInputError.ErrorTypes)2);
+                InvalidInputError error = new InvalidInputError(InvalidInputError.ErrorTypes.InvalidInputYOrN);
                 Console.WriteLine($"\n{error.ErrorMessage}");
                 Console.Write("Would you like to add an additional player? (y/n): ");
                 answer = Console.ReadLine();
