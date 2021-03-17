@@ -53,15 +53,15 @@ namespace WheelOfFortune
             Prompt.WelcomeMessage();
 
             string person = Prompt.CreatePlayer();
-            Player player = new Player(person);
-            Players.Enqueue(player);
+            Player newPlayer = new(person);
+            Players.Enqueue(newPlayer);
 
             char addNewPlayerResponse = Prompt.AddAdditionalPlayer();
             while (addNewPlayerResponse == 'y')
             {
                 person = Prompt.CreatePlayer();
-                player = new Player(person);
-                Players.Enqueue(player);
+                newPlayer = new(person);
+                Players.Enqueue(newPlayer);
                 addNewPlayerResponse = Prompt.AddAdditionalPlayer();
             }
 
