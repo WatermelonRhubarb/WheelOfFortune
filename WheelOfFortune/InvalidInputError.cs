@@ -24,10 +24,10 @@ namespace WheelOfFortune
 
         static Dictionary<ErrorTypes, string> ErrorMessages = new Dictionary<ErrorTypes, string>()
         {
-            {ErrorTypes.EmptyInput, "Invalid input: input cannot be blank - please enter a valid input." },
-            {ErrorTypes.ReceivedStringExpectedChar, "Invalid input: input should be a single letter - please enter a valid input." },
-            {ErrorTypes.InvalidInputYOrN, "Invalid input: input should be 'y' or 'n' - please enter a valid input." },
-            {ErrorTypes.InvalidInput1Or2, "Invalid input: input should be '1' or '2' - please enter a valid input." }
+            {ErrorTypes.EmptyInput, "Invalid input: input cannot be blank - please enter a valid input.\n" },
+            {ErrorTypes.ReceivedStringExpectedChar, "Invalid input: input should be a single letter - please enter a valid input.\n" },
+            {ErrorTypes.InvalidInputYOrN, "Invalid input: input should be 'y' or 'n' - please enter a valid input.\n" },
+            {ErrorTypes.InvalidInput1Or2, "Invalid input: input should be '1' or '2' - please enter a valid input.\n" }
         };
 
         /// <summary>
