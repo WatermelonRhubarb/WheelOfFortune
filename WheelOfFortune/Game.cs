@@ -34,18 +34,6 @@ namespace WheelOfFortune
         public Puzzle CurrentPuzzle { get; set; }
 
         /// <summary>
-        /// A List to keep possible puzzles
-        /// </summary>
-        private List<string> allPuzzles = new List<string>()
-        {
-            "Hello World",
-            "For the night is dark and full of terrors",
-            "For the stormcloaks",
-            "I wish you good fortune in the wars to come",
-            "You know nothing Jon Snow"
-        };
-
-        /// <summary>
         /// A method that initialies the Game properties and start the turn
         /// </summary>
         public void StartGame()
