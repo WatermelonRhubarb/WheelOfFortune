@@ -34,6 +34,11 @@ namespace WheelOfFortune
         public Puzzle CurrentPuzzle { get; set; }
 
         /// <summary>
+        /// A reference to round details
+        /// </summary>
+        public Round CurrentRound { get; set; }
+
+        /// <summary>
         /// A List to keep possible puzzles
         /// </summary>
         private List<string> allPuzzles = new List<string>()
@@ -110,7 +115,60 @@ namespace WheelOfFortune
         /// </summary>
         public void StartTurn()
         {
-            Console.WriteLine(CurrentPuzzle.PuzzleSoFar + "\n");
+            // set new CurrentPlayer if CurrentPlayer is null
+            if(CurrentPlayer == null)
+            {
+                // dequeue from Players list and set to CurrentPlayer aka take next player from queue and set it to current
+                CurrentPlayer = Players.Dequeue();
+            } 
+
+            // so now that we have a current player, they will start to perform guesses so call on StartTurn method from Prompt class passing in CurrentPlayer and CurrentPuzzle
+            Prompt.StartTurn(CurrentPlayer, CurrentPuzzle);
+
+            // the GetAction method from Prompt class should return 1 or 2 from the Enum 
+            char solveOrGuessActionType = Prompt.GetActionType();
+
+            // Take return value from Prompt.GetActionType method and pass in action type to CurrentPlayer.SetAction
+            // This will not return anything, it just sets the action in CurrentAction 
+            CurrentPlayer.SetAction(solveOrGuessActionType);
+
+            // CurrentPlayer.CurrentAction argument is set to an action class either guess or solve puzzle so pass action instance into Prompt action function
+            // I believe it is a string return value so leaving it as string instead of dynamic for now
+            string playerInput = Prompt.PromptAction(CurrentPlayer.CurrentAction);
+
+            // Prompt action will return a valid guess from user (letter or phrase based on what the user selects) so set it to execute function --> playerInput just stores the prompt action call return and pass to execute function
+            CurrentPlayer.CurrentAction.Execute(playerInput, CurrentPuzzle);
+
+            // update Round.Winner to determine a winner
+            // check the current player's current action 
+            // if it is solve puzzle type (from enum return value) execute function returns a boolean (to indicate if they correctly guess or not)
+            // if it returns true then you know you have a round winner
+            // HALP not sure if this is right plz feel free to provide feedback
+            if(CurrentPlayer.CurrentAction.ActionType == SolvePuzzleAction)
+            {
+                bool isPuzzleSolved = CurrentPlayer.PerformAction((Action.ActionType)
+                if(typeof isPuzzleSolved == true)
+                {
+                    Round.Winner = CurrentPlayer;
+                }
+                
+            }
+
+            // update players and currentplayer if guess is incorrect
+            // when it is false, regardless of the action just take current player and put it back to queue and set to null
+
+            if(typeof isPuzzleSolved == false)
+            {
+                CurrentPlayer = Players.Enqueue();
+                CurrentPlayer = null;
+
+            }
+            
+
+            // -----------------------------------------
+            // * this is Marlon's old code, didn't want to nix it right away, I am in backup mode like Safi hehe 
+            // -----------------------------------------
+            /* Console.WriteLine(CurrentPuzzle.PuzzleSoFar + "\n");
 
             ConsoleKeyInfo keyPressed;
             int actionKey;
@@ -136,6 +194,7 @@ namespace WheelOfFortune
                 Console.WriteLine(CurrentPuzzle.PuzzleSoFar + "\n");
                 StartTurn();
             }
+            */
         }
 
         /// <summary>
