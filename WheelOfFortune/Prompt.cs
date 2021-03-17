@@ -70,7 +70,16 @@ namespace WheelOfFortune
         /// </summary>
         public static void StartTurn(Player currentPlayer, Puzzle currentPuzzle)
         {
+            int spacerCount = currentPuzzle.PuzzleSoFar.Length + 20;
+            string spacer = new string('-', spacerCount);
+            string buffer = new string(' ', 9);
+            Console.WriteLine("\n" + spacer);
+            Console.WriteLine($"|{buffer}{currentPuzzle.PuzzleSoFar}{buffer}|");
+            Console.WriteLine(spacer + "\n");
 
+            Console.WriteLine($"Current Player's Turn: {currentPlayer.Name}\n");
+
+            return;
         }
 
         /// <summary>
