@@ -30,5 +30,10 @@ namespace WheelOfFortune
             {ErrorTypes.InvalidInput1Or2, "Invalid input: input should be '1' or '2' - please enter a valid input." }
         };
 
+        /// <summary>
+        /// Error message representing the error instance
+        /// </summary>
+        public string ErrorMessage;
+
     }
 }
