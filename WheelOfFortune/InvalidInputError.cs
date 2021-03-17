@@ -35,5 +35,13 @@ namespace WheelOfFortune
         /// </summary>
         public string ErrorMessage;
 
+        /// <summary>
+        /// Constructor for the InvalidInputError class which sets the appropriate ErrorMessage according to type of error
+        /// </summary>
+        /// <param name="errorType">The type of the validation error</param>
+        public InvalidInputError(ErrorTypes errorType)
+        {
+            ErrorMessage = ErrorMessages[errorType];
+        }
     }
 }
