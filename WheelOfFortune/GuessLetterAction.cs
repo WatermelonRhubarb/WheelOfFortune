@@ -23,49 +23,8 @@ namespace WheelOfFortune
         /// </summary>
         public char LetterGuess { get; set; }
 
-        private string validateUserInput(string userInput)
-        {
-            if (userInput.Length != 1)
-            {
-                Console.WriteLine("Invalid Guess.Please enter a non empty ,non multi letter");
-                userInput = Console.ReadLine();
-                return userInput;
-            }
-            else
-            {
-                return userInput;
-            }
-        }
-        private bool ValidateUserInputNotEmpty(string userInput)
-        {
-            bool validNotEmpty = false;
-            if (userInput.Length == 0)
-            {
-                validNotEmpty = false;
-            }
-            else
-            {
-                validNotEmpty = true;
-            }
-            
-           
-            return validNotEmpty;
-        }
-        private bool ValidateUserInputNotMoreThanOneLetter(string userInput)
-        {
-            bool validNotMulti = false;
-           
-            if(userInput.Length == 1)
-            {
-                validNotMulti = true;
-            }
-            else
-            {
-                validNotMulti = false;
-            }
-            
-            return validNotMulti;
-        }
+        
+       
         /// <summary>
         /// The Execute Action Implementation overriding the abstract method to provide the specific implemenation for the GuessLetterAction type
         /// This function will include the checking the guessed letter and updating the current puzzle if the guessed letter is correct
@@ -74,19 +33,12 @@ namespace WheelOfFortune
         /// </summary>
         public override bool Execute(Puzzle currentPuzzle)
         {
-            string validUserInput = "";
-          //  bool valid = false;
+ 
             if(LetterGuess == '\0')
             {
                 //calling the Prompt Handler to prompt the user to guess a letter
-                Prompt.PromptAction(this);
-                //Console.WriteLine("Start Guessing: Enter a letter:");
-                string userInput = Console.ReadLine();
-                validUserInput = validateUserInput(userInput.ToLower());
-                // validity (non empty and one letter)
-                char loweredLetter = validUserInput[0].ToString().ToLower()[0];
-                this.LetterGuess = loweredLetter;
-
+                this.LetterGuess = (char)Prompt.PromptAction(this);
+               
             }
             // check is letter valid in puzzle (wasn't guessed before and exists in the puzzle answer)
             bool letterValidInPuzzle = currentPuzzle.IsLetterValidInPuzzle(LetterGuess);

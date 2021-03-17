@@ -32,13 +32,8 @@ namespace WheelOfFortune
         public override bool Execute(Puzzle currentPuzzle)
         {
             //calling the Prompt Handler to prompt the user to solve the puzzle
-            Prompt.PromptAction(this);
-            
-            while (PuzzleGuess.Length == 0)
-            {
-                Console.WriteLine("Please enter a valid solution to the puzzle: ");
-                PuzzleGuess = Console.ReadLine();
-            }
+            PuzzleGuess = Prompt.PromptAction(this);
+           
             return currentPuzzle.IsPuzzleSolved(PuzzleGuess);
         }
     }

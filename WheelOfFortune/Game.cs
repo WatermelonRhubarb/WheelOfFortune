@@ -55,42 +55,23 @@ namespace WheelOfFortune
         /// </summary>
         public void StartGame()
         {
-            Console.WriteLine("Press any button to start the game!");
-            Console.ReadKey(true);
-            AddPlayer();
+            Prompt.WelcomeMessage();
 
-            Random random = new();
-            int index = random.Next(0, allPuzzles.Count);
-            string nextPuzzle = allPuzzles[index];
-            Puzzle puzzle = new(nextPuzzle);
-            CurrentPuzzle = puzzle;
-
-            StartTurn();
-        } 
-
-        /// <summary>
-        /// A method that initializes Player and its properties
-        /// </summary>
-        public void AddPlayer()
-        {
-            Console.WriteLine("Hey there! Welcome to Wheel of Fortune! Before we begin, what is your first name?");
-            string name = Console.ReadLine();
-
-            // ** user validation check
-            // originally had it as an if conditon but realized while loop would be better in the event Player repeatedly does not pass in input for name
-            while (string.IsNullOrEmpty(name))
+            do
             {
-                Console.WriteLine("Vanna White would like to know your name. Please input your name once more so we can play the game!");
-                name = Console.ReadLine();
+                string person = Prompt.CreatePlayer();
+                Player newPlayer = new(person);
+                Players.Enqueue(newPlayer);
+            }
+            while (Prompt.AddAdditionalPlayer() == 'y');
+
+            while (Rounds.Count < 3)
+            {
+                StartRound();
             }
 
-            Console.WriteLine($"Hiya, {name}!");
-
-            CurrentPlayer = new Player(name);
-
-            // TODO: Use Players queue to hold multiple players
+            EndGame();
         }
-
 
         /// <summary>
         /// A method that starts a Round

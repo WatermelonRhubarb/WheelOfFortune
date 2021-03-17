@@ -98,16 +98,50 @@ namespace WheelOfFortune
         /// </summary>
         public static dynamic PromptAction(Action action)
         {
+            dynamic userInput=null;
             if (action.ActionTypeProperty == Action.ActionType.GuessLetterAction)
             {
                 Console.WriteLine("Start Guessing: Enter a letter:");
+                userInput = Console.ReadLine();
+                userInput = validateUserGuess(userInput);
+                userInput = userInput[0];
             }
             else if(action.ActionTypeProperty == Action.ActionType.SolvePuzzleAction)
             {
                 Console.WriteLine("What is your solution to the puzzle?");
+                userInput = Console.ReadLine();
+                while (userInput.Length == 0)
+                {
+                    userInput = Prompt.PromptInValidEmptyInput();
+                }
             }
             
-            return "";
+            return userInput;
+        }
+        private static string validateUserGuess(string userInput)
+        {
+            userInput = userInput.ToLower();
+            if (userInput.Length != 1)
+            {
+                Console.WriteLine("Invalid Guess.Please enter a Non Empty,Single letter:");
+                userInput = Console.ReadLine();
+                return userInput;
+            }
+            else
+            {
+                return userInput;
+            }
+        }
+
+
+        /// <summary>
+        /// A method to prompt to the user that the input is invalid
+        /// </summary>
+        public static string PromptInValidEmptyInput()
+        {
+            Console.WriteLine("The Input can't be empty.Please enter a valid solution to the puzzle: ");
+            string puzzleSolution = Console.ReadLine().ToLower();
+            return puzzleSolution;
         }
 
         /// <summary>
