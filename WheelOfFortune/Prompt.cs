@@ -27,7 +27,20 @@ namespace WheelOfFortune
         /// </summary>
         public static string CreatePlayer()
         {
-            return "";
+            Console.Write("\nWhat should we call you?: ");
+            string name = Console.ReadLine();
+
+            while (string.IsNullOrEmpty(name))
+            {
+                InvalidInputError error = new InvalidInputError((InvalidInputError.ErrorTypes)0);
+                Console.WriteLine($"\n{error.ErrorMessage}");
+                Console.Write("Vanna White would like to know your name. \nPlease input your name once more so we can play the game!: ");
+                name = Console.ReadLine();
+            }
+
+            Console.WriteLine($"\nWelcome to the game {name}!");
+
+            return name;
         }
 
         /// <summary>
