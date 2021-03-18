@@ -20,26 +20,36 @@ namespace WheelOfFortune
         /// </summary>
         public string PuzzleSoFar { get; set; }
 
+        private Dictionary<char, List<int>> PuzzleDictionary = new Dictionary<char, List<int>>();
+
+        private char[] SplitPuzzle;
+
         /// <summary>
         /// Constructor initializing Puzzle instance with the input string
         /// </summary>
-        /// <param name="puzzle"></param>
         public Puzzle()
         {
             PuzzleAnswer = GenerateNewPuzzle();
-            PuzzleSoFar = "";
-            // TODO: string punctuation = " .?!,'";
-            foreach (char character in PuzzleAnswer)
+            SplitPuzzle = new char[PuzzleAnswer.Length];
+            
+            for (int i = 0; i < PuzzleAnswer.Length; i++)
             {
-                //if (punctuation.Contains(character))
-                if (character == ' ')
+                if (!Char.IsWhiteSpace(PuzzleAnswer[i]))
                 {
-                    PuzzleSoFar += character;
-                } else
+                    if (!PuzzleDictionary.ContainsKey(PuzzleAnswer[i]))
+                    {
+                        PuzzleDictionary.Add(PuzzleAnswer[i], new List<int>());
+                    }
+                    PuzzleDictionary[PuzzleAnswer[i]].Add(i);
+                    SplitPuzzle[i] = "_"[0];
+                }
+                else
                 {
-                    PuzzleSoFar += '*';
+                    SplitPuzzle[i] = " "[0];
                 }
             }
+
+            PuzzleSoFar = String.Join(" ", SplitPuzzle);
         }
 
         /// <summary>
