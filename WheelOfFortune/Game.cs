@@ -121,6 +121,10 @@ namespace WheelOfFortune
             {
                 CurrentPlayer.SetAction(Action.ActionType.GuessLetterAction);
             }
+
+            // replace if statement to refactor the many ifs yowzaaaaa
+            CurrentPlayer.SetAction(Action.ActionType.SolvePuzzleAction) solveOrGuessActionType - 1;
+            CurrentPlayer.SetAction(Action.ActionType.GuessLetterAction) solveOrGuessActionType - 2;
             
 
             // CurrentPlayer.CurrentAction argument is set to an action class either guess or solve puzzle so pass action instance into Prompt action function
@@ -136,12 +140,11 @@ namespace WheelOfFortune
             // if it returns true then you know you have a round winner
             if(continuePlayerTurn == true)
             {
-                if(CurrentPlayer.CurrentAction.ActionTypeProperty == Action.ActionType.SolvePuzzleAction && isPuzzleSolved == true)
+                if(CurrentPlayer.CurrentAction.ActionTypeProperty == Action.ActionType.SolvePuzzleAction)
                 {
                     Round.Winner = CurrentPlayer;
                 } 
-            } else if(isPuzzleSolved == false)
-            {
+            } else {
                     // update players and currentplayer if guess is incorrect
                     // when it is false, regardless of the action just take current player and put it back to queue and set to null
                 CurrentPlayer = Players.Enqueue();
