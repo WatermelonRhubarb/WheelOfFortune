@@ -89,6 +89,7 @@ namespace WheelOfFortune
         public static char GetActionType()
         {
             return ' ';
+
         }
 
         /// <summary>
@@ -171,7 +172,6 @@ namespace WheelOfFortune
         /// </summary>
         public static void GameOverMessage(Player[] winners)
         {
-            
         }
 
     }
