@@ -1,7 +1,7 @@
-﻿using System.Text;
-
-using System;
+﻿using System;
+using System.Text;
 using System.Collections;
+using System.Collections.Generic;
 
 namespace WheelOfFortune
 {
@@ -20,32 +20,59 @@ namespace WheelOfFortune
         /// </summary>
         public string PuzzleSoFar { get; set; }
 
+        private Dictionary<char, List<int>> PuzzleDictionary = new Dictionary<char, List<int>>();
+
+        private char[] SplitPuzzle;
+
         /// <summary>
         /// Constructor initializing Puzzle instance with the input string
         /// </summary>
-        /// <param name="puzzle"></param>
-        public Puzzle(string puzzle)
+        public Puzzle()
         {
-            PuzzleAnswer = puzzle;
-            PuzzleSoFar = "";
-            // TODO: string punctuation = " .?!,'";
-            foreach (char character in PuzzleAnswer)
+            PuzzleAnswer = GenerateNewPuzzle();
+            SplitPuzzle = new char[PuzzleAnswer.Length];
+            
+            for (int i = 0; i < PuzzleAnswer.Length; i++)
             {
-                //if (punctuation.Contains(character))
-                if (character == ' ')
+                if (!Char.IsWhiteSpace(PuzzleAnswer[i]))
                 {
-                    PuzzleSoFar += character;
-                } else
+                    if (!PuzzleDictionary.ContainsKey(PuzzleAnswer[i]))
+                    {
+                        PuzzleDictionary.Add(PuzzleAnswer[i], new List<int>());
+                    }
+                    PuzzleDictionary[PuzzleAnswer[i]].Add(i);
+                    SplitPuzzle[i] = "_"[0];
+                }
+                else
                 {
-                    PuzzleSoFar += '*';
+                    SplitPuzzle[i] = " "[0];
                 }
             }
+
+            PuzzleSoFar = String.Join(" ", SplitPuzzle);
         }
 
         /// <summary>
         /// An array holding previous guesses
         /// </summary>
         public ArrayList guessedLetters { get; set; }
+        
+        ///<summary></summary>
+        private string GenerateNewPuzzle()
+        {
+            List<string> allPuzzles = new List<string>()
+            {
+                "Hello World",
+                "For the night is dark and full of terrors",
+                "For the stormcloaks",
+                "I wish you good fortune in the wars to come",
+                "You know nothing Jon Snow"
+            };
+            
+            Random rand = new Random();
+            return allPuzzles[rand.Next(allPuzzles.Count)];
+        }
+
         /// <summary>
         /// A method to check whether the passed guessed word <paramref name="phrase"/> matches the puzzle or no
         /// </summary>
@@ -135,22 +162,13 @@ namespace WheelOfFortune
         /// <param name="letter">existing passed letter</param>
         public void UpdatePuzzleSoFar(char letter)
         {
-            var updatedPuzzleSoFar = new StringBuilder(); ;
-            for (int index = 0; index < PuzzleAnswer.Length; index++)
+            foreach (int i in PuzzleDictionary[letter])
             {
-                char correctLetter = PuzzleAnswer[index];
-                if (char.ToLower(letter) == char.ToLower(correctLetter))
-                {
-                    updatedPuzzleSoFar.Append(correctLetter);
-                }
-                else
-                {
-                    updatedPuzzleSoFar.Append(PuzzleSoFar[index]);
-                }
+                SplitPuzzle[i] = letter;
             }
 
-            PuzzleSoFar = updatedPuzzleSoFar.ToString();
-
+            PuzzleDictionary[letter].Clear();
+            PuzzleSoFar = String.Join(" ", SplitPuzzle);
             return;
         }
     }

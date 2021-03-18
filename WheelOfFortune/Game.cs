@@ -129,46 +129,14 @@ namespace WheelOfFortune
             {
                 if(CurrentPlayer.CurrentAction.ActionTypeProperty == Action.ActionType.SolvePuzzleAction)
                 {
-                    Round.Winner = CurrentPlayer;
+                    CurrentRound.Winner = CurrentPlayer;
                 } 
             } else {
                     // update players and currentplayer if guess is incorrect
                     // when it is false, regardless of the action just take current player and put it back to queue and set to null
-                CurrentPlayer = Players.Enqueue();
+                Players.Enqueue(CurrentPlayer);
                 CurrentPlayer = null;
             }
-            
-
-            // -----------------------------------------
-            // * this is Marlon's old code, didn't want to nix it right away, I am in backup mode like Safi hehe 
-            // -----------------------------------------
-            /* Console.WriteLine(CurrentPuzzle.PuzzleSoFar + "\n");
-
-            ConsoleKeyInfo keyPressed;
-            int actionKey;
-
-            Console.WriteLine("Press 1 to solve the puzzle or press 2 to guess a letter.");
-            keyPressed = Console.ReadKey(true);
-            actionKey = (int)Char.GetNumericValue(keyPressed.KeyChar);
-
-            while (actionKey != 1 && actionKey != 2)
-            {
-                Console.WriteLine("Invalid input! Press 1 to solve the puzzle or press 2 to guess a letter.");
-                keyPressed = Console.ReadKey(true);
-                actionKey = (int)Char.GetNumericValue(keyPressed.KeyChar);
-            }
-
-            bool isPuzzleSolved = CurrentPlayer.PerformAction((Action.ActionType)actionKey - 1, CurrentPuzzle);
-            if (isPuzzleSolved)
-            {
-                EndGame();
-            }
-            else
-            {
-                Console.WriteLine(CurrentPuzzle.PuzzleSoFar + "\n");
-                StartTurn();
-            }
-            */
         }
 
         /// <summary>
