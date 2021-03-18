@@ -20,7 +20,7 @@ namespace WheelOfFortune
         /// </summary>
         public string PuzzleSoFar { get; set; }
 
-        public Dictionary<char, List<int>> PuzzleDictionary = new Dictionary<char, List<int>>();
+        private Dictionary<char, List<int>> PuzzleDictionary = new Dictionary<char, List<int>>();
 
         private char[] SplitPuzzle;
 
