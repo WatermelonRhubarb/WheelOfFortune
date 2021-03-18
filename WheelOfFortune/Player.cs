@@ -39,12 +39,11 @@ namespace WheelOfFortune
         }
 
         /// <summary>
-        /// A method to perform a specific action  on a passed puzzle (solve the puzzle-guess a letter-spin the wheel)
+        /// A method that instantiates a specified Action for the CurrentAction of the Player
         /// <param name="actionType"></param>
-        /// <param name="currentPuzzle"></param>
         /// <returns>bool to indicate whether the player's action successfully solved the puzzle or not </returns>
         /// </summary>
-        public bool PerformAction(Action.ActionType actionType, Puzzle currentPuzzle)
+        public void SetAction(Action.ActionType actionType)
         {
             if (actionType == Action.ActionType.GuessLetterAction)
             {
@@ -53,8 +52,6 @@ namespace WheelOfFortune
             {
                 CurrentAction = new SolvePuzzleAction();
             }
-            if (Name == "Test") return false;
-            return CurrentAction.Execute(currentPuzzle);
         }
     }
 }
