@@ -172,7 +172,25 @@ namespace WheelOfFortune
         /// </summary>
         public static void GameOverMessage(Player[] winners)
         {
+
+            if (winners.Length == 1)
+            {
+                Console.Write($"Player {winners[0].Name} won the Game.");
+            }
+            else
+            {
+                string winnersNames = "";
+                foreach (Player p in winners)
+                {
+                    winnersNames += "," + p.Name;
+                }
+                Console.Write("Its a Tie.The Winners are:" + winnersNames);
+            }
+
         }
 
     }
+
+
+}
 }
