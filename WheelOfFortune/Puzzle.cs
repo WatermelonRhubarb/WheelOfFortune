@@ -20,7 +20,7 @@ namespace WheelOfFortune
         /// </summary>
         public string PuzzleSoFar { get; set; }
 
-        private Dictionary<char, List<int>> PuzzleDictionary = new Dictionary<char, List<int>>();
+        public Dictionary<char, List<int>> PuzzleDictionary = new Dictionary<char, List<int>>();
 
         private char[] SplitPuzzle;
 
@@ -162,22 +162,16 @@ namespace WheelOfFortune
         /// <param name="letter">existing passed letter</param>
         public void UpdatePuzzleSoFar(char letter)
         {
-            var updatedPuzzleSoFar = new StringBuilder(); ;
-            for (int index = 0; index < PuzzleAnswer.Length; index++)
+            if (PuzzleDictionary.ContainsKey(letter))
             {
-                char correctLetter = PuzzleAnswer[index];
-                if (char.ToLower(letter) == char.ToLower(correctLetter))
+                foreach (int i in PuzzleDictionary[letter])
                 {
-                    updatedPuzzleSoFar.Append(correctLetter);
+                    SplitPuzzle[i] = letter;
                 }
-                else
-                {
-                    updatedPuzzleSoFar.Append(PuzzleSoFar[index]);
-                }
+                PuzzleDictionary[letter].Clear();
             }
 
-            PuzzleSoFar = updatedPuzzleSoFar.ToString();
-
+            PuzzleSoFar = String.Join(" ", SplitPuzzle);
             return;
         }
     }
