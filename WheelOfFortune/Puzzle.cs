@@ -162,15 +162,12 @@ namespace WheelOfFortune
         /// <param name="letter">existing passed letter</param>
         public void UpdatePuzzleSoFar(char letter)
         {
-            if (PuzzleDictionary.ContainsKey(letter))
+            foreach (int i in PuzzleDictionary[letter])
             {
-                foreach (int i in PuzzleDictionary[letter])
-                {
-                    SplitPuzzle[i] = letter;
-                }
-                PuzzleDictionary[letter].Clear();
+                SplitPuzzle[i] = letter;
             }
 
+            PuzzleDictionary[letter].Clear();
             PuzzleSoFar = String.Join(" ", SplitPuzzle);
             return;
         }
