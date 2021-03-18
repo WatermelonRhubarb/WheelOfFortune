@@ -1,9 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Text.RegularExpressions;
 
 namespace WheelOfFortune
 {
@@ -21,7 +18,7 @@ namespace WheelOfFortune
         /// <summary>
         /// A list of the rounds throughout the game
         /// </summary>
-        List<Round> Rounds { get; set; }
+        public List<Round> Rounds { get; set; }
 
         /// <summary>
         /// A reference for the current player
@@ -124,7 +121,37 @@ namespace WheelOfFortune
         /// </summary>
         public void EndRound()
         {
+            // Dict to hold names of winners and the amount of rounds won
+            Dictionary<string, int> hashMap = new Dictionary<string, int>();
 
+            // For each round, we place the winner in the dict. 
+            // The TryGetValue method will create the key and make the value 0 if the key doesn't exist
+            foreach(Round round in Rounds)
+            {
+                hashMap.TryGetValue(round.Winner.Name, out int count);
+                hashMap[round.Winner.Name] =  count + 1;
+            }
+
+            // Get name of player with max rounds won (key)
+            string playerWithMostWins = hashMap.Aggregate((x, y) => x.Value > y.Value ? x : y).Key;
+
+            // Get the max number of wins (value)
+            int maxRoundsWon = hashMap.Aggregate((x, y) => x.Value > y.Value ? x : y).Value;
+
+            // Create a list to hold winner/winners
+            List<string> list = new List<string>() { playerWithMostWins };
+
+            // Check for a tie
+            foreach(KeyValuePair<string, int> winner in hashMap)
+            {
+                if (winner.Key != playerWithMostWins && winner.Value == maxRoundsWon)
+                {
+                    list.Add(winner.Key);
+                }
+            }
+
+            // Pass list to Prompt.GameOverMessage
+            Prompt.GameOverMessage(list);
         }
 
         /// <summary>
