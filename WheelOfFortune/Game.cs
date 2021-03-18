@@ -114,17 +114,7 @@ namespace WheelOfFortune
             // Take return value from Prompt.GetActionType method and pass in action type to CurrentPlayer.SetAction
             // This will not return anything, it just sets the action in CurrentAction
             // Action types are enums, 0th property = solvepuzzleaction / 1st property = guessletteraction
-            if(solveOrGuessActionType == 0)
-            {
-                CurrentPlayer.SetAction(Action.ActionType.SolvePuzzleAction);
-            } else if(solveOrGuessActionType == 1)
-            {
-                CurrentPlayer.SetAction(Action.ActionType.GuessLetterAction);
-            }
-
-            // replace if statement to refactor the many ifs yowzaaaaa
-            CurrentPlayer.SetAction(Action.ActionType.SolvePuzzleAction) solveOrGuessActionType - 1;
-            CurrentPlayer.SetAction(Action.ActionType.GuessLetterAction) solveOrGuessActionType - 2;
+            CurrentPlayer.SetAction((Action.ActionType) solveOrGuessActionType - 1);
             
 
             // CurrentPlayer.CurrentAction argument is set to an action class either guess or solve puzzle so pass action instance into Prompt action function
