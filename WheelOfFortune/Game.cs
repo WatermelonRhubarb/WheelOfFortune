@@ -18,7 +18,7 @@ namespace WheelOfFortune
         /// <summary>
         /// A list of the rounds throughout the game
         /// </summary>
-        public List<Round> Rounds { get; set; }
+        public List<Round> Rounds { get; set; } = new List<Round>();
 
         /// <summary>
         /// A reference for the current player
@@ -34,18 +34,6 @@ namespace WheelOfFortune
         /// A reference to round details
         /// </summary>
         public Round CurrentRound { get; set; }
-
-        /// <summary>
-        /// A List to keep possible puzzles
-        /// </summary>
-        private List<string> allPuzzles = new List<string>()
-        {
-            "Hello World",
-            "For the night is dark and full of terrors",
-            "For the stormcloaks",
-            "I wish you good fortune in the wars to come",
-            "You know nothing Jon Snow"
-        };
 
         /// <summary>
         /// A method that initialies the Game properties and start the turn
@@ -116,7 +104,7 @@ namespace WheelOfFortune
 
             // CurrentPlayer.CurrentAction argument is set to an action class either guess or solve puzzle so pass action instance into Prompt action function
             // I believe it is a string return value so leaving it as string instead of dynamic for now
-            string playerInput = Prompt.PromptAction(CurrentPlayer.CurrentAction);
+            var playerInput = Prompt.PromptAction(CurrentPlayer.CurrentAction);
 
             // Prompt action will return a valid guess from user (letter or phrase based on what the user selects) so set it to execute function --> playerInput just stores the prompt action call return and pass to execute function
             bool continuePlayerTurn = CurrentPlayer.CurrentAction.Execute(playerInput, CurrentPuzzle);
