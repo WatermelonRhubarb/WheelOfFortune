@@ -103,8 +103,8 @@ namespace WheelOfFortune
             dynamic userInput=null;
             if (action.ActionTypeProperty == Action.ActionType.GuessLetterAction)
             {
-                Console.Write("Start Guessing:");
-                Console.Write("Enter a letter:");
+                Console.Write("\nStart Guessing: ");
+                Console.Write("Enter a letter: ");
                 userInput = Console.ReadLine();
                 userInput = validateUserGuess(userInput);
                 userInput = userInput[0];
@@ -141,7 +141,7 @@ namespace WheelOfFortune
                     }
                     Console.Write($"\n{error.ErrorMessage}");
                     valid = false;
-                    Console.Write("Enter a letter:");
+                    Console.Write("\nEnter a letter: ");
                     userInput = Console.ReadLine();
                 }
                 else
@@ -162,7 +162,7 @@ namespace WheelOfFortune
         {
             InvalidInputError error = new InvalidInputError(InvalidInputError.ErrorTypes.EmptyInput);
             Console.Write($"\n{error.ErrorMessage}");
-            Console.Write("Please enter a valid solution to the puzzle: ");
+            Console.Write("\nPlease enter a valid solution to the puzzle: ");
             string puzzleSolution = Console.ReadLine().ToLower();
             return puzzleSolution;
         }
