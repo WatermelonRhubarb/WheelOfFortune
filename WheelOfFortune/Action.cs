@@ -28,9 +28,10 @@
 
         /// <summary>
         /// An abstract method to be overriden by the inheriting children so each class can include its version of implemnataion according to its type
+        /// <param name="guess"></param>
         /// <param name="currentPuzzle">parameter holds the current puzzle instace</param>
         /// <returns>bool to indicate whether the puzzle was solved by the action executed</returns>
         /// </summary>
-        public abstract bool Execute(Puzzle currentPuzzle);
+        public abstract bool Execute(dynamic guess, Puzzle currentPuzzle);
     }
 }

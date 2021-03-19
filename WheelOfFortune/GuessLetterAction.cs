@@ -18,39 +18,27 @@ namespace WheelOfFortune
         {
             ActionTypeProperty = ActionType.GuessLetterAction;
         }
-        /// <summary>
-        /// A property for the Letter Guess
-        /// </summary>
-        public char LetterGuess { get; set; }
-
-        
        
         /// <summary>
         /// The Execute Action Implementation overriding the abstract method to provide the specific implemenation for the GuessLetterAction type
         /// This function will include the checking the guessed letter and updating the current puzzle if the guessed letter is correct
+        /// <param name="letterGuess"></param>
         /// <param name="currentPuzzle">parameter holds the current puzzle instace</param>
         /// <returns>bool to indicate whether or not the letter is valid in puzzle (wasn't guessed before and exists in the puzzle answer)</returns>
         /// </summary>
-        public override bool Execute(Puzzle currentPuzzle)
+        public override bool Execute(dynamic letterGuess, Puzzle currentPuzzle)
         {
- 
-            if(LetterGuess == '\0')
-            {
-                //calling the Prompt Handler to prompt the user to guess a letter
-                this.LetterGuess = (char)Prompt.PromptAction(this);
-               
-            }
             // check is letter valid in puzzle (wasn't guessed before and exists in the puzzle answer)
-            bool letterValidInPuzzle = currentPuzzle.IsLetterValidInPuzzle(LetterGuess);
+            bool letterValidInPuzzle = currentPuzzle.IsLetterValidInPuzzle(letterGuess);
             //check does the guessed letter exist in the Puzzle
             if (letterValidInPuzzle)
             {
                 // update the current puzzle
-                currentPuzzle.UpdatePuzzleSoFar(LetterGuess);
+                currentPuzzle.UpdatePuzzleSoFar(letterGuess);
             }
 
-            // return false to indicate the puzzle is not solved yet
-            return false; 
+            // return whether guess was correct
+            return letterValidInPuzzle; 
         }
     }
 }

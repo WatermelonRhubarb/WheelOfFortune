@@ -87,9 +87,19 @@ namespace WheelOfFortune
         /// A method to ask user for the type of action they will take
         /// <returns>char of '1' or '2' to indicate solving or guessing a letter</returns>
         /// </summary>
-        public static char GetActionType()
+        public static int GetActionType()
         {
-            return ' ';
+            Console.Write("Please enter 1 to solve the puzzle or enter 2 to guess a letter: ");
+            string answer = Console.ReadLine();
+            
+            while(answer != "1" && answer != "2")
+            {
+                InvalidInputError error = new InvalidInputError(InvalidInputError.ErrorTypes.InvalidInput1Or2);
+                Console.WriteLine($"\n{error.ErrorMessage}");
+                Console.Write("\nPlease enter 1 to solve the puzzle or enter 2 to guess a letter: ");
+                answer = Console.ReadLine();
+            }
+            return (int)Char.GetNumericValue(answer[0]);
 
         }
 
@@ -103,15 +113,14 @@ namespace WheelOfFortune
             dynamic userInput=null;
             if (action.ActionTypeProperty == Action.ActionType.GuessLetterAction)
             {
-                Console.Write("\nStart Guessing: ");
-                Console.Write("Enter a letter: ");
+                Console.Write("Let's start guessing~ Enter a letter: ");
                 userInput = Console.ReadLine();
                 userInput = validateUserGuess(userInput);
                 userInput = userInput[0];
             }
             else if(action.ActionTypeProperty == Action.ActionType.SolvePuzzleAction)
             {
-                Console.Write("What is your solution to the puzzle?");
+                Console.Write("What is your solution to the puzzle? ");
                 userInput = Console.ReadLine();
                 while (userInput.Length == 0)
                 {
@@ -173,7 +182,59 @@ namespace WheelOfFortune
         /// </summary>
         public static void GameOverMessage(List<string> winners)
         {
+            if (winners.Count == 1)
+            {
+                Console.Write($"Player {winners[0]} won the Game.");
+            }
+            else
+            {
+                string winnersNames = String.Join(", ", winners);
+                Console.Write("There was a Tie! The Winners are: " + winnersNames);
+            }
+
+        }
+
+        /// <summary>
+        /// A method to announce the start of a new round
+        /// </summary>
+        public static void StartRound(int round)
+        {
+            string spacer = new string('-', 27);
+            string buffer = new string(' ', 9);
+            Console.WriteLine("\n" + spacer);
+            Console.WriteLine($"|{buffer}ROUND {round}{buffer}|");
+            Console.WriteLine(spacer);
+
+            return;
+        }
+
+        /// <summary>
+        /// A method to announce the winner of the round
+        /// </summary>
+        /// <param name="roundWinner"></param>
+        /// <param name="roundPuzzle"></param>
+        public static void RoundOverMessage(Player roundWinner, Puzzle roundPuzzle)
+        {
+            Console.Write($"\n'{roundPuzzle.PuzzleAnswer}' is correct! {roundWinner.Name} wins this round!\n");
+        }
+
+        /// <summary>
+        /// A method to announce when a player makes a correct guess
+        /// </summary>
+        public static void CorrectGuessMessage()
+        {
+            Console.WriteLine("Correct! You get another guess!");
+        }
+
+        /// <summary>
+        /// A method to announce when a player makes an incorrect guess
+        /// </summary>
+        public static void IncorrectGuessMessage()
+        {
+            Console.WriteLine("Incorrect! Better luck next turn!");
         }
 
     }
+
+
 }

@@ -36,11 +36,11 @@ namespace WheelOfFortune
             {
                 if (!Char.IsWhiteSpace(PuzzleAnswer[i]))
                 {
-                    if (!PuzzleDictionary.ContainsKey(PuzzleAnswer[i]))
+                    if (!PuzzleDictionary.ContainsKey(Char.ToLower(PuzzleAnswer[i])))
                     {
-                        PuzzleDictionary.Add(PuzzleAnswer[i], new List<int>());
+                        PuzzleDictionary.Add(Char.ToLower(PuzzleAnswer[i]), new List<int>());
                     }
-                    PuzzleDictionary[PuzzleAnswer[i]].Add(i);
+                    PuzzleDictionary[Char.ToLower(PuzzleAnswer[i])].Add(i);
                     SplitPuzzle[i] = "_"[0];
                 }
                 else
@@ -81,10 +81,6 @@ namespace WheelOfFortune
         public bool IsPuzzleSolved(string phrase)
         {
             bool isSolved = (phrase.Trim().ToLower() == PuzzleAnswer.ToLower());
-            if (!isSolved)
-            {
-                Console.WriteLine($"{phrase} is incorrect!");
-            }
             return isSolved;
         }
 
@@ -96,37 +92,7 @@ namespace WheelOfFortune
         /// <returns>letter valid to be added in puzzle bool</returns>
         public bool IsLetterValidInPuzzle(char letter)
         {
-            char loweredLetter = letter.ToString().ToLower()[0];
-            bool isLetterValidInPuzzle = false;
-            // Validation to check wether or not this letter was guessed in this puzzle before
-            if (!IsLetterGuessedBefore(loweredLetter))
-            {
-                // if letter wasn't guessed before
-                // add the letter to the guessed letters list
-                
-                guessedLetters.Add(loweredLetter);
-
-
-                // Compare guess with PuzzleSolution
-                isLetterValidInPuzzle = PuzzleAnswer.ToLower().Contains(loweredLetter);
-                if (isLetterValidInPuzzle)
-                {
-                    Console.WriteLine("Correct Guess.");
-                }
-                else
-                {
-                    
-                    Console.WriteLine("Incorrect Guess...try another letter");
-                }
-            }
-            else
-            {
-                isLetterValidInPuzzle = false;
-                Console.WriteLine("This letter had been guessed for this puzzle before.");
-            }
-           
-
-            return isLetterValidInPuzzle;
+            return PuzzleDictionary.ContainsKey(letter) && PuzzleDictionary[letter].Count > 0;
         }
 
         /// <summary>
