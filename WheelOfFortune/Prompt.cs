@@ -87,9 +87,19 @@ namespace WheelOfFortune
         /// A method to ask user for the type of action they will take
         /// <returns>char of '1' or '2' to indicate solving or guessing a letter</returns>
         /// </summary>
-        public static char GetActionType()
+        public static int GetActionType()
         {
-            return ' ';
+            Console.Write("Please enter 1 to solve the puzzle or enter 2 to guess a letter: ");
+            string answer = Console.ReadLine();
+            
+            while(answer != "1" && answer != "2")
+            {
+                InvalidInputError error = new InvalidInputError(InvalidInputError.ErrorTypes.InvalidInput1Or2);
+                Console.WriteLine($"\n{error.ErrorMessage}");
+                Console.Write("\nPlease enter 1 to solve the puzzle or enter 2 to guess a letter: ");
+                answer = Console.ReadLine();
+            }
+            return (int)Char.GetNumericValue(answer[0]);
 
         }
 
