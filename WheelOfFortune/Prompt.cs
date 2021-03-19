@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace WheelOfFortune
 {
@@ -148,7 +149,7 @@ namespace WheelOfFortune
         /// A method to announce the winner or a tie between players
         /// <param name="winners">list of winning players</param>
         /// </summary>
-        public static void GameOverMessage(Player[] winners)
+        public static void GameOverMessage(List<string> winners)
         {
 
         }
