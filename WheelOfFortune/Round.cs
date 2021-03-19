@@ -9,11 +9,11 @@
         /// <summary>
         /// The Round Puzzle
         /// </summary>
-        Puzzle RoundPuzzle { get; set; }
+        public Puzzle RoundPuzzle { get; set; }
         /// <summary>
         /// The Round Winner
         /// </summary>
-        Player Winner { get; set; }
+        public Player Winner { get; set; }
 
         /// <summary>
         /// Constructor for the Round class, setting the inputted Puzzle instance as the RoundPuzzle
