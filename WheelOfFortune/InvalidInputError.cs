@@ -24,7 +24,7 @@ namespace WheelOfFortune
 
         static Dictionary<ErrorTypes, string> ErrorMessages = new Dictionary<ErrorTypes, string>()
         {
-            {ErrorTypes.EmptyInput, "Invalid input: input cannot be blank..\n" },
+            {ErrorTypes.EmptyInput, "Invalid input: input cannot be blank\n" },
             {ErrorTypes.ReceivedStringExpectedChar, "Invalid input: input should be a single letter\n" },
             {ErrorTypes.InvalidInputYOrN, "Invalid input: input should be 'y' or 'n'\n" },
             {ErrorTypes.InvalidInput1Or2, "Invalid input: input should be '1' or '2'\n" }
