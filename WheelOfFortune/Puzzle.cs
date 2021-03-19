@@ -36,11 +36,11 @@ namespace WheelOfFortune
             {
                 if (!Char.IsWhiteSpace(PuzzleAnswer[i]))
                 {
-                    if (!PuzzleDictionary.ContainsKey(PuzzleAnswer[i]))
+                    if (!PuzzleDictionary.ContainsKey(Char.ToLower(PuzzleAnswer[i])))
                     {
-                        PuzzleDictionary.Add(PuzzleAnswer[i], new List<int>());
+                        PuzzleDictionary.Add(Char.ToLower(PuzzleAnswer[i]), new List<int>());
                     }
-                    PuzzleDictionary[PuzzleAnswer[i]].Add(i);
+                    PuzzleDictionary[Char.ToLower(PuzzleAnswer[i])].Add(i);
                     SplitPuzzle[i] = "_"[0];
                 }
                 else
