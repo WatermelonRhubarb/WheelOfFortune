@@ -70,6 +70,7 @@ namespace WheelOfFortune
             // so long as CurrentRound.Winner == null, call StartTurn()
             while(CurrentRound.Winner == null)
             {
+                Prompt.StartRound(Rounds.Count + 1);
                 StartTurn();
             }
             // add CurrentRound to Round <List> 
@@ -118,10 +119,15 @@ namespace WheelOfFortune
                 if(CurrentPlayer.CurrentAction.ActionTypeProperty == Action.ActionType.SolvePuzzleAction)
                 {
                     CurrentRound.Winner = CurrentPlayer;
-                } 
+                    Prompt.RoundOverMessage(CurrentPlayer, CurrentPuzzle);
+                } else
+                {
+                    Prompt.CorrectGuessMessage();
+                }
             } else {
-                    // update players and currentplayer if guess is incorrect
-                    // when it is false, regardless of the action just take current player and put it back to queue and set to null
+                // update players and currentplayer if guess is incorrect
+                // when it is false, regardless of the action just take current player and put it back to queue and set to null
+                Prompt.IncorrectGuessMessage();
                 Players.Enqueue(CurrentPlayer);
                 CurrentPlayer = null;
             }
@@ -130,7 +136,7 @@ namespace WheelOfFortune
         /// <summary>
         /// A method that ends a Round
         /// </summary>
-        public void EndRound()
+        public void EndGame()
         {
             // Dict to hold names of winners and the amount of rounds won
             Dictionary<string, int> hashMap = new Dictionary<string, int>();
@@ -147,7 +153,7 @@ namespace WheelOfFortune
             string playerWithMostWins = hashMap.Aggregate((x, y) => x.Value > y.Value ? x : y).Key;
 
             // Get the max number of wins (value)
-            int maxRoundsWon = hashMap.Aggregate((x, y) => x.Value > y.Value ? x : y).Value;
+            int maxRoundsWon = hashMap[playerWithMostWins];
 
             // Create a list to hold winner/winners
             List<string> list = new List<string>() { playerWithMostWins };
@@ -163,17 +169,6 @@ namespace WheelOfFortune
 
             // Pass list to Prompt.GameOverMessage
             Prompt.GameOverMessage(list);
-        }
-
-        /// <summary>
-        /// A method that ends the whole Game
-        /// </summary>
-        public void EndGame()
-        {
-            Console.WriteLine($"Congratulations, {CurrentPlayer.Name}!");
-            Console.WriteLine($"{CurrentPlayer.Name} won the game!");
-
-            return;
         }
 
     }
