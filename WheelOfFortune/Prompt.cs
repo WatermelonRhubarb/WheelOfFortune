@@ -150,7 +150,7 @@ namespace WheelOfFortune
                     }
                     Console.Write($"\n{error.ErrorMessage}");
                     valid = false;
-                    Console.Write("Enter a letter:");
+                    Console.Write("\nEnter a letter: ");
                     userInput = Console.ReadLine();
                 }
                 else
@@ -171,7 +171,7 @@ namespace WheelOfFortune
         {
             InvalidInputError error = new InvalidInputError(InvalidInputError.ErrorTypes.EmptyInput);
             Console.Write($"\n{error.ErrorMessage}");
-            Console.Write("Please enter a valid solution to the puzzle: ");
+            Console.Write("\nPlease enter a valid solution to the puzzle: ");
             string puzzleSolution = Console.ReadLine().ToLower();
             return puzzleSolution;
         }
